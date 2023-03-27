@@ -16,22 +16,22 @@ class ProductSeeder extends Seeder
         $data = [
             [
                 'name' => 'Flauta Dulce',
-                'price' => '10.000',  
+                'price' => '10000',  
             ],
 
             [
                 'name' => 'Piano digital',
-                'price' => '80.000',  
+                'price' => '80000',  
             ],
 
             [
                 'name' => 'Guitarra Electrica',
-                'price' => '40.000',  
+                'price' => '40000',  
             ],
 
             [
                 'name' => 'Guitarra Criolla',
-                'price' => '25.000',  
+                'price' => '25000',  
             ],
         ];
 

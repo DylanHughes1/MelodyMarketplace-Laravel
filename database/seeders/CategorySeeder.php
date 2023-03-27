@@ -32,6 +32,6 @@ class CategorySeeder extends Seeder
             ],
         ];
 
-        DB::table('client')->insert($data);
+        DB::table('category')->insert($data);
     }
 }
