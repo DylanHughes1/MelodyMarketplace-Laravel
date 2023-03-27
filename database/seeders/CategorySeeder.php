@@ -12,6 +12,24 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $data = [
+            [
+                'name' => 'Guitarras',
+            ],
+
+            [
+                'name' => 'Pianos',
+            ],
+
+            [
+                'name' => 'Amplificadores',
+            ],
+
+            [
+                'name' => 'Flautas',
+            ],
+        ];
+
+        DB::table('client')->insert($data);
     }
 }

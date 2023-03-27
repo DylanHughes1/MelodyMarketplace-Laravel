@@ -22,6 +22,6 @@ class ClientSeeder extends Seeder
             ],
         ];
 
-        DB::table('truck_drivers')->insert($data);
+        DB::table('client')->insert($data);
     }
 }
