@@ -5,25 +5,23 @@ La idea general del proyecto es desarrollar un sitio web dedicado a la venta de 
 
 ## Diagrama ER
 
-Se debe incluir un Diagrama ER de los datos a utilizar:
-
 ![Diagrama entidad-relacion inicial](https://i.imgur.com/T2L4wA5.png)
 
 ## Actualizaciones a los datos
 
 El Proyecto Framework PHP - Laravel permitirá a los usuarios administradores:
 
-Cargar Instrumentos y equipos.
-Editar Instrumentos y equipos.
-Eliminar Instrumentos y equipos. 
-Asignar Categorías a los distintos productos. 
+- Cargar Instrumentos y equipos.
+- Editar Instrumentos y equipos.
+- Eliminar Instrumentos y equipos. 
+- Asignar Categorías a los distintos productos. 
 
 ## Información del Servicio Web
 
 El servicio debe permitir:
-Visualizar las categorías contenedoras de todos los productos asociados.
-Cargar y/o modificar el carro de compras de los productos que el cliente desee.
-Permitir finalizar la compra total de el/los productos.
+- Visualizar las categorías contenedoras de todos los productos asociados.
+- Cargar y/o modificar el carro de compras de los productos que el cliente desee.
+- Permitir finalizar la compra total de el/los productos.
 
 
 ## Visualización y Acceso a la Información
