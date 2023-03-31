@@ -5,7 +5,7 @@ La idea general del proyecto es desarrollar un sitio web dedicado a la venta de 
 
 ## Diagrama ER
 
-![Diagrama entidad-relacion inicial](https://i.imgur.com/T2L4wA5.png)
+![Diagrama entidad-relacion inicial](https://i.imgur.com/56zDde0.png)
 
 ## Actualizaciones a los datos
 
@@ -15,6 +15,7 @@ El Proyecto Framework PHP - Laravel permitirá a los usuarios administradores:
 - Editar Instrumentos y equipos.
 - Eliminar Instrumentos y equipos. 
 - Asignar Categorías a los distintos productos. 
+- Ver Historial de Pedidos con sus detalles.
 
 ## Información del Servicio Web
 
