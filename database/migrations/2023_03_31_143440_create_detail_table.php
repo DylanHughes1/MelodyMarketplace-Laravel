@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('client', function (Blueprint $table) {
+        Schema::create('detail', function (Blueprint $table) {
             $table->id();
-            $table->string('name');          
-            $table->string('email')->unique();
+            $table->integer('amount');
             $table->timestamps();
+
+            // Asociar el id del producto y pedido
+
         });
     }
 
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('client');
+        Schema::dropIfExists('detail');
     }
 };
