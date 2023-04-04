@@ -17,8 +17,6 @@ class ClientSeeder extends Seeder
             [
                 'name' => 'Dylan Maslein',
                 'email' => 'dylan_maslein@outlook.com',
-                'password' => bcrypt('web2023'),
-                'credit_card' => '0000111122223333'   
             ],
         ];
 

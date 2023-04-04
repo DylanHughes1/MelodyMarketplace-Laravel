@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DetailSeeder extends Seeder
 {
@@ -13,12 +14,12 @@ class DetailSeeder extends Seeder
     {
         $data = [
             [
-                'amount' => '3',
-
-                'product_id' => '1',
+                'product_id' => 1,
                 
-                'order_id' => '1',
+                'order_id' => 1,
             ],
         ];
+
+        DB::table('detail')->insert($data);
     }
 }
