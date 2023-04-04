@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('detail', function (Blueprint $table) {
             $table->id();
-            $table->integer('amount');
             $table->timestamps();
 
             $table->unsignedBigInteger('product_id')->nullable();
