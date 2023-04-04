@@ -16,7 +16,11 @@ return new class extends Migration
             $table->integer('amount');
             $table->timestamps();
 
-            // Asociar el id del producto y pedido
+            $table->unsignedBigInteger('product_id')->nullable();
+            $table->foreign('product_id')->references('id')->on('product')->onDelete('cascade');
+
+            $table->unsignedBigInteger('order_id')->nullable();
+            $table->foreign('order_id')->references('id')->on('order')->onDelete('cascade');
 
         });
     }
