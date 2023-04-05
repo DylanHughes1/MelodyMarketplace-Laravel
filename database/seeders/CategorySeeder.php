@@ -16,19 +16,19 @@ class CategorySeeder extends Seeder
     {
         $data = [
             [
-                'name' => 'Guitarras',
+                'name' => 'Cuerda',
             ],
 
             [
-                'name' => 'Pianos',
+                'name' => 'Percusion',
             ],
 
             [
-                'name' => 'Amplificadores',
+                'name' => 'Viento',
             ],
 
             [
-                'name' => 'Flautas',
+                'name' => 'Sonido',
             ],
         ];
 

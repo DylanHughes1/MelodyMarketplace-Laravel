@@ -17,25 +17,79 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Flauta Dulce',
                 'price' => '10000',
-                'category_id' => 4  
+                'subcategory_id' => 2,  
             ],
 
             [
+                'name' => 'Flauta Travesera',
+                'price' => '78000',
+                'subcategory_id' => 2,  
+            ],
+
+            [
+                'name' => 'Flauta Flautín',
+                'price' => '12300',
+                'subcategory_id' => 2,  
+            ],
+
+            [
+                'name' => 'Flauta Ocarina',
+                'price' => '9990',
+                'subcategory_id' => 2,  
+            ],
+            
+            [
                 'name' => 'Piano digital',
                 'price' => '80000', 
-                'category_id' => 2,   
+                'subcategory_id' => 1,   
+            ],
+
+            [
+                'name' => 'Piano acústico',
+                'price' => '100000', 
+                'subcategory_id' => 1,   
+            ],
+
+            [
+                'name' => 'Piano de cola',
+                'price' => '120000', 
+                'subcategory_id' => 1,   
             ],
 
             [
                 'name' => 'Guitarra Electrica',
                 'price' => '40000',
-                'category_id' => 1,  
+                'subcategory_id' => 3,  
             ],
 
             [
                 'name' => 'Guitarra Criolla',
                 'price' => '25000',
-                'category_id' => 1,  
+                'subcategory_id' => 3,  
+            ],
+
+            [
+                'name' => 'Amplificador Digital',
+                'price' => '11000',
+                'subcategory_id' => 5,  
+            ],
+
+            [
+                'name' => 'Amplificador Híbrido',
+                'price' => '70000',
+                'subcategory_id' => 5,  
+            ],
+
+            [
+                'name' => 'Batería electrónica',
+                'price' => '9000',
+                'subcategory_id' => 4,  
+            ],
+
+            [
+                'name' => 'Batería acústica',
+                'price' => '160000',
+                'subcategory_id' => 4,  
             ],
         ];
 

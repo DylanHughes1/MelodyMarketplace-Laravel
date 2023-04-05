@@ -18,6 +18,10 @@ class OrderSeeder extends Seeder
             [
                 'delivery_address' => 'Terrada 123',
             ],
+
+            [
+                'delivery_address' => 'Juan Molina 256',
+            ],
         ];
 
         DB::table('order')->insert($data);
