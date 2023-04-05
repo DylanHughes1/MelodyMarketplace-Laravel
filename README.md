@@ -5,7 +5,7 @@ La idea general del proyecto es desarrollar un sitio web dedicado a la venta de 
 
 ## Diagrama ER
 
-![Diagrama entidad-relacion inicial](https://i.imgur.com/56zDde0.png)
+![Diagrama entidad-relacion inicial](https://i.imgur.com/Eojfg3X.png)
 
 ## Actualizaciones a los datos
 
