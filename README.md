@@ -5,7 +5,7 @@ La idea general del proyecto es desarrollar un sitio web dedicado a la venta de 
 
 ## Diagrama ER
 
-![Diagrama entidad-relacion inicial](https://i.imgur.com/Eojfg3X.png)
+![Diagrama entidad-relacion inicial](https://i.imgur.com/ryFKK5N.png)
 
 ## Actualizaciones a los datos
 
@@ -15,6 +15,7 @@ El Proyecto Framework PHP - Laravel permitirá a los usuarios administradores:
 - Editar Instrumentos y equipos.
 - Eliminar Instrumentos y equipos. 
 - Asignar Categorías a los distintos productos. 
+- Asignar Subcategorias a las distintas categorias.
 - Ver Historial de Pedidos con sus detalles.
 
 ## Información del Servicio Web
@@ -26,7 +27,7 @@ El servicio debe permitir:
 
 
 ## Visualización y Acceso a la Información
-A través de una interfaz amigable, y un menú de navegación claro el cliente podrá comprar instrumentos musicales disponibles luego de haberse registrado e iniciado sesión. Tendrá acceso a todo el contenido organizado, incluso cuenta con una búsqueda interna para facilitar la búsqueda de los equipos. También podrá modificar una compra o cancelarla.
+A través de una interfaz amigable, y un menú de navegación claro el cliente podrá comprar instrumentos musicales disponibles luego de haberse registrado e iniciado sesión. Tendrá acceso a todo el contenido organizado, incluso cuenta con una búsqueda interna para facilitar la búsqueda de los equipos. Los mismos estaran organizandos en categorias generales y ademas en categorias mas especificas para facilitar su busqueda y organizacion. También podrá modificar una compra o cancelarla.
 Además, el cliente podrá ver los últimos descuentos, y suscribirse para recibir correos electrónicos de los mismos.
 
 ## Pasos
