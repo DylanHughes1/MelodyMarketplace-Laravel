@@ -20,6 +20,12 @@ class AdminSeeder extends Seeder
                 'email' => 'martin_hughes@outlook.com',
                 'password' => bcrypt('web2023'),
             ],
+
+            [
+                'name' => 'Admin',
+                'email' => 'admin@iaw.com',
+                'password' => bcrypt('admin123'),
+            ],
         ];
 
         DB::table('users')->insert($data);
