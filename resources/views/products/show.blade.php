@@ -1,4 +1,7 @@
-<x-app-layout>
+@extends("layouts.app")
+@section('title', 'Products')
+@section('content')
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{$product->name}}
@@ -44,7 +47,12 @@
                     </div>
                     <div class="flex space-x-4 justify-center items-center h-full">
                         <button type="button" data-modal-target="default-modal" data-modal-toggle="default-modal" class="text-white bg-blue-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Editar</button>
-                        <button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Eliminar</button>
+                        
+                        <form action="/products/{{$product->id}}" method="POST" >
+                                @csrf
+                                @method('DELETE')
+                            <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Eliminar</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -105,4 +113,4 @@
             </div>
         </div>   
     </div>
-</x-app-layout>
+@endsection
