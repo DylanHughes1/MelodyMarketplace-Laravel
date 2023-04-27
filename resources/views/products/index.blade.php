@@ -7,7 +7,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     
-                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <div class="relative overflow-x-auto shadow-sm sm:rounded-lg">
                             <div class="flex items-center justify-between pb-4">
                                 <div>
                                     <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
@@ -65,7 +65,7 @@
                                     @foreach($products as $product)
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                             <td class="w-32 p-4">
-                                                <img src="https://d2r9epyceweg5n.cloudfront.net/stores/001/631/795/products/diseno-sin-titulo-181-06cab9a2223312036116197311357169-640-0.png" alt="Product">
+                                                <img class="rounded-t-lg" src="{{$product->image_link}}" alt="imagen del producto{{$product->name}}">
                                             </td>
                                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 {{$product->name}}

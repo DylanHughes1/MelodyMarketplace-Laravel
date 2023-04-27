@@ -6,7 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Subcategory;
-use Validator;
+use Exception;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Intervention\Image\Facades\Image;
+
 class ProductController extends Controller
 {
     /**
@@ -62,7 +67,20 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+    }
+
+    public function editImage(string $id)
+    {
+        $product = Product::find($id);
+        $image = Image::make($product->image_link);
+        $image->greyscale();
+
+        //Ver como almacenar
+
+        $product->save();
+
+        return redirect("/products/".$product->id);
     }
 
     /**
@@ -75,15 +93,28 @@ class ProductController extends Controller
             'price' => 'nullable|numeric|gt:0',
             'subcategory' => 'integer',
         ]);
-
+        
         $product = Product::find($id);
 
         $product->name = $request->input('name');
         $product->price = $request->input('price');
         $product->subcategory_id = $request->input('subcategory');
+
+
+            if($request->has('image')){
+
+                $image = $request->file('image');
+                if($product->image_path != null){
+                            Cloudinary::destroy($product->image_path);  
+                }
+
+                $uploadedFile = $image->storeOnCloudinary('products');
+                $product->image_link = $uploadedFile->getSecurePath();
+                $product->image_path = $uploadedFile->getPublicId();
+            }
+            $product->save();
         
-        $product->update();
-       
+        
         return redirect("/products/".$product->id);
     }
 
@@ -92,10 +123,6 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        
-        $product = Product::find($id);
-        $product->delete();
-
-        return redirect("/products");
+        //
     }
 }

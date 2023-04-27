@@ -11,19 +11,19 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+                <div class="p-6 bg-white border-b border-gray-200">
 
-                    <div class="flex justify-center items-center h-screen">                   
+                    <div class="flex items-center justify-center pb-4">                
                         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                             
-                            <img class="rounded-t-lg" src="https://d2r9epyceweg5n.cloudfront.net/stores/001/631/795/products/diseno-sin-titulo-181-06cab9a2223312036116197311357169-640-0.png" alt="" />
+                            <img class="rounded-t-lg" src="{{$product->image_link}}" alt="imagen del producto{{$product->name}}">
                             
                             <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
 
                                 <tbody>
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            ID: {{$product->id}}
+                                            {{$product->name}}
                                         </td>   
                                     </tr>
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -45,13 +45,12 @@
                             </table>
                         </div>
                     </div>
-                    <div class="flex space-x-4 justify-center items-center h-full">
-                        <button type="button" data-modal-target="default-modal" data-modal-toggle="default-modal" class="text-white bg-blue-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Editar</button>
-                        
-                        <form action="/products/{{$product->id}}" method="POST" >
-                                @csrf
-                                @method('DELETE')
-                            <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Eliminar</button>
+                    <div class="flex items-center justify-center pb-4"> 
+                        <button type="button" data-modal-target="default-modal" data-modal-toggle="default-modal" href="#" class="text-white bg-blue-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 mr-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Editar</button> 
+                        <form action="/products/{{$product->id}}/disable" method="POST" >
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Deshabilitar</button>
                         </form>
                     </div>
                 </div>
@@ -62,7 +61,7 @@
             <div class="relative w-full max-w-2xl px-4 h-full md:h-auto">
                 <!-- Modal content -->
                 <div class="bg-white rounded-lg shadow relative dark:bg-gray-700">
-                    <form method="POST" class="space-y-6" action="/products/{{$product->id}}">
+                    <form method="POST" class="space-y-6" action="/products/{{$product->id}}#" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -80,6 +79,7 @@
                       
                                 <div>        
                                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload image</label>
+                                    
                                     <input name="image" id="image" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
                                 </div>
                                 <div>

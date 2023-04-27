@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,5 +31,6 @@ Route::middleware('auth')->group(function () {
 
 
 Route::resource('products', 'App\Http\Controllers\ProductController')->middleware(['auth']);
+Route::put('/products/{id}/disable', [ProductController::class, 'editImage'])->middleware(['auth']);
 
 require __DIR__.'/auth.php';
