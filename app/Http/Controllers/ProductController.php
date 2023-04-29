@@ -10,6 +10,7 @@ use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Cloydinary\Uploader;
 use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
@@ -19,7 +20,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::orderBy('id', 'asc')->get();
         $categories = Category::all();
         $subcategories = Subcategory::all();
         
@@ -73,10 +74,8 @@ class ProductController extends Controller
     public function editImage(string $id)
     {
         $product = Product::find($id);
-        $image = Image::make($product->image_link);
-        $image->greyscale();
-
-        //Ver como almacenar
+        if($product->hasStock)
+            $product->hasStock = false;
 
         $product->save();
 

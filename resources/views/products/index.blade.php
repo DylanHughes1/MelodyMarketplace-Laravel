@@ -1,6 +1,7 @@
 @extends("layouts.app")
 @section('title', 'Products')
 @section('content')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -57,6 +58,9 @@
                                             Price
                                         </th>
                                         <th scope="col" class="px-6 py-3">
+                                            Stock
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
                                             Action
                                         </th>
                                     </tr>
@@ -65,7 +69,7 @@
                                     @foreach($products as $product)
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                             <td class="w-32 p-4">
-                                                <img class="rounded-t-lg" src="{{$product->image_link}}" alt="imagen del producto{{$product->name}}">
+                                                <img class="rounded-t-lg" id="image" src="{{$product->image_link}}" alt="imagen del producto{{$product->name}}">
                                             </td>
                                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 {{$product->name}}
@@ -80,9 +84,16 @@
                                                 ${{$product->price}}
                                             </td>
                                             <td class="px-6 py-4">
+                                                @if($product->hasStock)
+                                                    Si
+                                                @else
+                                                    No
+                                                @endif
+                                            </td>
+                                            <td class="px-6 py-4">
                                                 <a href="products/{{$product->id}}" id="seeMore" type="button"class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-2">See More</a>
                                             </td>
-                                        </tr>                                       
+                                        </tr>                              
                                     @endforeach
                                 </tbody>
                             </table>        

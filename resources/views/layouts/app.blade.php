@@ -16,7 +16,14 @@
             margin: 0;
             padding: 0;
         }
+        .hidden {
+            display: none;
+            }
+        .grayscale {
+            filter: grayscale(100%);
+        }
     </style>
+
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">

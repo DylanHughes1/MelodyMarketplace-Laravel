@@ -23,7 +23,7 @@ class ProductSeeder extends Seeder
                 'image_link' => 'https://artemusical.com.ar/wp/wp-content/uploads/2022/05/Yamaha-YRS-23.jpg',
                 'image_path' => '',
                 'subcategory_id' => 2, 
-                'hasStock' => true, 
+                'hasStock' => false, 
             ],
 
             [
@@ -41,7 +41,7 @@ class ProductSeeder extends Seeder
                 'image_link' => 'https://http2.mlstatic.com/D_NQ_NP_689354-MLA46713619296_072021-O.webp',
                 'image_path' => '',
                 'subcategory_id' => 2,  
-                'hasStock' => true, 
+                'hasStock' => false, 
             ],
 
             [
