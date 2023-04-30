@@ -33,4 +33,6 @@ Route::middleware('auth')->group(function () {
 Route::resource('products', 'App\Http\Controllers\ProductController')->middleware(['auth']);
 Route::put('/products/{id}/disable', [ProductController::class, 'editImage'])->middleware(['auth']);
 
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+
 require __DIR__.'/auth.php';
