@@ -35,7 +35,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
+        return view('products.create')
+            ->with('categories',$categories)
+            ->with('subcategories',$subcategories);
     }
 
     /**
@@ -43,7 +47,33 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            'name' => 'required|max:255',
+            'price' => 'required|integer|gt:0',
+            'subcategory' => 'required|integer',
+            'image' => 'required|image|max:1000'
+        ]);
+
+        try{
+            $image = $request->file('image');
+            $uploadedFile = $image->storeOnCloudinary('/products');
+        }catch (Exception $e){
+            return redirect("/products")->withErrors("Ocurrió un error al almacenar la imagen\n");
+        }
+
+        $product = new Product();
+        $product->name = $request->get('name');
+        $product->price = $request->get('price');
+        $product->subcategory_id = $request->get('subcategory');
+        $product->hasStock = true;
+        $product->image_link = $uploadedFile->getPath();
+        $product->image_path = $uploadedFile->getPublicId();
+
+        $product->save();
+
+        return redirect("/products");
+
     }
 
     /**
