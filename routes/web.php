@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,6 @@ Route::middleware('auth')->group(function () {
 Route::resource('products', 'App\Http\Controllers\ProductController')->middleware(['auth']);
 Route::put('/products/{id}/disable', [ProductController::class, 'editImage'])->middleware(['auth']);
 
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::resource('categories', 'App\Http\Controllers\CategoryController')->middleware(['auth']);
 
 require __DIR__.'/auth.php';
