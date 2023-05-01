@@ -36,5 +36,6 @@ Route::put('/products/{id}/disable', [ProductController::class, 'editImage'])->m
 Route::post('/products/create', [ProductController::class, 'store'])->middleware(['auth']);
 
 Route::resource('categories', 'App\Http\Controllers\CategoryController')->middleware(['auth']);
+Route::post('/categories/create', [CategoryController::class, 'store'])->middleware(['auth']);
 
 require __DIR__.'/auth.php';
