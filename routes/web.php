@@ -38,4 +38,7 @@ Route::post('/products/create', [ProductController::class, 'store'])->middleware
 Route::resource('categories', 'App\Http\Controllers\CategoryController')->middleware(['auth']);
 Route::post('/categories/create', [CategoryController::class, 'store'])->middleware(['auth']);
 
+Route::resource('subcategories', 'App\Http\Controllers\SubcategoryController')->middleware(['auth']);
+Route::post('/subcategories/create', [SubcategoryController::class, 'store'])->middleware(['auth']);
+
 require __DIR__.'/auth.php';
