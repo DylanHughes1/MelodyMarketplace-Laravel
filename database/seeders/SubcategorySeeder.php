@@ -15,37 +15,62 @@ class SubcategorySeeder extends Seeder
     {
         $data = [
             [
-                'name' => 'Pianos',
+                'name' => 'Guitarras Eléctricas',
                 'category_id' => 1,
-                'image_link' => 'https://y6v8e8y4.rocketcdn.me/wp-content/uploads/2022/12/D_957574-MLA52994431941_122022-F.jpg',
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-electric-guitars.png?quality=60&width=168&height=201&auto=webp',
                 'image_path' => '',
             ],
-
             [
-                'name' => 'Flautas',
-                'category_id' => 3,
-                'image_link' => 'https://http2.mlstatic.com/D_NQ_NP_729632-MLA25949936468_092017-O.webp',
-                'image_path' => '',
-            ],
-
-            [
-                'name' => 'Guitarras',
+                'name' => 'Guitarras Acústicas',
                 'category_id' => 1,
-                'image_link' => 'https://http2.mlstatic.com/D_NQ_NP_741049-MLA53805698986_022023-O.jpg',
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-acoustic-guitars.png?quality=60&width=168&height=201&auto=webp',
+                'image_path' => '',
+            ],
+            [
+                'name' => 'Accesorios de Guitarras',
+                'category_id' => 1,
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-guitar-accessories.png?quality=60&width=168&height=201&auto=webp',
                 'image_path' => '',
             ],
 
+            /* ---------- */
+
             [
-                'name' => 'Baterias',
+                'name' => 'Bajos Eléctricos',
                 'category_id' => 2,
-                'image_link' => 'https://www.shutterstock.com/image-photo/set-drums-isolated-on-white-260nw-1629489898.jpg',
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-electric-bass-gtrs.png?quality=60&width=168&height=201&auto=webp',
                 'image_path' => '',
             ],
-
             [
-                'name' => 'Amplificadores',
-                'category_id' => 4,
-                'image_link' => 'https://res.cloudinary.com/walmart-labs/image/upload/d_default.jpg/w_960,dpr_auto,f_auto,q_auto:best/mg/gm/1p/images/product-images/img_large/00503046319370l.jpg',
+                'name' => 'Bajos Acústicos',
+                'category_id' => 2,
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-acoustic-bass-guitars.png?quality=60&width=168&height=201&auto=webp',
+                'image_path' => '',
+            ],
+            [
+                'name' => 'Accesorios de Bajo',
+                'category_id' => 2,
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-bass-gtr-strings.png?quality=60&width=168&height=201&auto=webp',
+                'image_path' => '',
+            ],
+            
+             /** ---------- */
+            [
+                'name' => 'Amplificadores de Guitarra',
+                'category_id' => 3,
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-guitar-amplifiers.png?quality=60&width=168&height=201&auto=webp',
+                'image_path' => '',
+            ],
+            [
+                'name' => 'Amplificadores de Bajo',
+                'category_id' => 3,
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-bass-gtr-amps.png?quality=60&width=168&height=201&auto=webp',
+                'image_path' => '',
+            ],
+            [
+                'name' => 'Efectos',
+                'category_id' => 3,
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-guitar-pedals-effects.png?quality=60&width=168&height=201&auto=webp',
                 'image_path' => '',
             ],
             

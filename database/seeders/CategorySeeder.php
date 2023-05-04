@@ -16,26 +16,36 @@ class CategorySeeder extends Seeder
     {
         $data = [
             [
-                'name' => 'Cuerda',
-                'image_link' => 'https://img.freepik.com/vector-premium/conjunto-instrumentos-musicales-cuerda-pulsada_273525-744.jpg?w=900',
+                'name' => 'Guitarras',
+                'image_link' => 'https://guitargearfinder.com/wp-content/uploads/2019/12/types-of-guitars.jpg',
                 'image_path' => '',
             ],
 
             [
-                'name' => 'Percusion',
-                'image_link' => 'https://st2.depositphotos.com/1000874/6436/i/600/depositphotos_64369181-stock-photo-music-percussion-instruments.jpg',
+                'name' => 'Bajos',
+                'image_link' => 'https://www.gearsavvy.com/wp-content/uploads/2021/02/types-of-bass-guitars.jpg',
                 'image_path' => '',
             ],
 
             [
-                'name' => 'Viento',
-                'image_link' => 'https://preview.free3d.com/img/2018/11/2374242109600302756/pb10yy7j.jpg',
+                'name' => 'Amplificadores y Efectos',
+                'image_link' => 'https://guitargearfinder.com/wp-content/uploads/2019/03/guitar-amps-explained.jpg',
                 'image_path' => '',
             ],
 
             [
-                'name' => 'Sonido',
-                'image_link' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK7KbmAO6OH_ardiypBCTsH1ckBhHKlRwIcQ&usqp=CAU',
+                'name' => 'Baterias',
+                'image_link' => '',
+                'image_path' => '',
+            ],
+            [
+                'name' => 'Teclados y MIDI',
+                'image_link' => '',
+                'image_path' => '',
+            ],
+            [
+                'name' => 'Grabación',
+                'image_link' => '',
                 'image_path' => '',
             ],
         ];
