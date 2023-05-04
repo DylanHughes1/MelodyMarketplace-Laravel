@@ -30,3 +30,6 @@ Route::post('/products/create', [APIProductController::class, 'store']);
 
 Route::apiResource('categories', APICategoryController::class);
 Route::post('/categories/create', [APICategoryController::class, 'store']);
+
+Route::apiResource('subcategories', APISubCategoryController::class);
+Route::post('/subcategories/create', [APISubCategoryController::class, 'store']);
