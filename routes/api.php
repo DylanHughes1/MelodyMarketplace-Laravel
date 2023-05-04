@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\APICategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('products', APIProductController::class);
 Route::put('/products/{id}/disable', [APIProductController::class, 'editImage']);
 Route::post('/products/create', [APIProductController::class, 'store']);
+
+Route::apiResource('categories', APICategoryController::class);
+Route::post('/categories/create', [APICategoryController::class, 'store']);
