@@ -73,6 +73,66 @@ class SubcategorySeeder extends Seeder
                 'image_link' => 'https://www.samash.com/media/wysiwyg/nci-guitar-pedals-effects.png?quality=60&width=168&height=201&auto=webp',
                 'image_path' => '',
             ],
+
+             /** ---------- */
+             [
+                'name' => 'Baterias Acústicas',
+                'category_id' => 4,
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-acoustic-drums.png?quality=60&width=168&height=201&auto=webp',
+                'image_path' => '',
+            ],
+            [
+                'name' => 'Baterias Electrónicas',
+                'category_id' => 4,
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-electronic-drums.png?quality=60&width=168&height=201&auto=webp',
+                'image_path' => '',
+            ],
+            [
+                'name' => 'Accesorios de Baterias',
+                'category_id' => 4,
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-drum-accessories.png?quality=60&width=168&height=201&auto=webp',
+                'image_path' => '',
+            ],
+
+             /** ---------- */
+             [
+                'name' => 'Pianos Digitales',
+                'category_id' => 5,
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-digital-pianos.png?quality=60&width=168&height=201&auto=webp',
+                'image_path' => '',
+            ],
+            [
+                'name' => 'Órganos',
+                'category_id' => 5,
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-organs.png?quality=60&width=168&height=201&auto=webp',
+                'image_path' => '',
+            ],
+            [
+                'name' => 'Teclados y Controladores MIDI',
+                'category_id' => 5,
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-midi-controllers-keyboards.png?quality=60&width=168&height=201&auto=webp',
+                'image_path' => '',
+            ],
+
+            /** ---------- */
+            [
+                'name' => 'Monitores de Estudio',
+                'category_id' => 6,
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-studio-monitors.png?quality=60&width=168&height=201&auto=webp',
+                'image_path' => '',
+            ],
+            [
+                'name' => 'Interfaces de audio',
+                'category_id' => 6,
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-audio-interfaces.png?quality=60&width=168&height=201&auto=webp',
+                'image_path' => '',
+            ],
+            [
+                'name' => 'Micrófonos',
+                'category_id' => 6,
+                'image_link' => 'https://www.samash.com/media/wysiwyg/nci-studio-condensor-mics.png?quality=60&width=168&height=201&auto=webp',
+                'image_path' => '',
+            ],
             
         ];
 

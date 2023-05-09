@@ -35,17 +35,17 @@ class CategorySeeder extends Seeder
 
             [
                 'name' => 'Baterias',
-                'image_link' => '',
+                'image_link' => 'https://www.samash.com/media/wysiwyg/RTD17KV2X.jpg?quality=60&width=338&height=338&auto=webp',
                 'image_path' => '',
             ],
             [
                 'name' => 'Teclados y MIDI',
-                'image_link' => '',
+                'image_link' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxFcu2avFCiSGUk0z-PlDB_-8U_adUfSza3Q&usqp=CAU',
                 'image_path' => '',
             ],
             [
                 'name' => 'Grabación',
-                'image_link' => '',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/Frameworks-Wall-Mount-Speaker-Stands-Pair/J13848000000000-00-220x220.jpg',
                 'image_path' => '',
             ],
         ];
