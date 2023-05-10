@@ -1,5 +1,5 @@
 @extends("layouts.app")
-@section('title', 'Subcategories')
+@section('title', 'Subcategorías')
 @section('content')
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -14,8 +14,6 @@
                         <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Añadir Subcategoria</button>
                     </a>
                 </div>
-                
-                <h1>Subcategorías</h1>
 
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -24,13 +22,13 @@
                                 <span class="sr-only">Image</span>
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Subcategory
+                                Subcategoría
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 ID
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Action
+                                Acción
                             </th>
                         </tr>
                     </thead>
@@ -48,7 +46,7 @@
                             </td>
 
                             <td class="px-6 py-4">
-                                <a href="subcategories/{{$subcategory->id}}" id="seeMore" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-2">See More</a>
+                                <a href="subcategories/{{$subcategory->id}}" id="seeMore" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-2">Ver Más</a>
                             </td>
                         </tr>
                         @endforeach

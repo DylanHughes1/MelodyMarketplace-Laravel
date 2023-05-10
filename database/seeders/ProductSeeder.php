@@ -144,11 +144,36 @@ class ProductSeeder extends Seeder
             ],
             /* ---------- */
             [
+                'name' => 'Gear One GS5 Guitar Stand Black',
+                'price' => '3500',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/585763000001000-00-720x720.jpg',
+                'image_path' => '',
+                'subcategory_id' => 6,  
+                'hasStock' => true, 
+            ],
+            [
+                'name' => 'Fender Original Series Instrument Cable',
+                'price' => '6100',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L55116000001001-00-720x720.jpg',
+                'image_path' => '',
+                'subcategory_id' => 6,  
+                'hasStock' => true, 
+            ],
+            [
+                'name' => 'Proline Solid Wood Guitar Wall Hanger Black',
+                'price' => '4100',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L65653000001000-00-720x720.jpg',
+                'image_path' => '',
+                'subcategory_id' => 6,  
+                'hasStock' => true, 
+            ],
+            /* ---------- */
+            [
                 'name' => 'Marshall DSL40CR 40W 1x12 Tube Guitar Amp',
                 'price' => '240000',
                 'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/K64638000000000-00-720x720.jpg',
                 'image_path' => '',
-                'subcategory_id' => 6,  
+                'subcategory_id' => 7,  
                 'hasStock' => true, 
             ],
             [
@@ -156,7 +181,7 @@ class ProductSeeder extends Seeder
                 'price' => '61000',
                 'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L68667000000000-00-720x720.jpg',
                 'image_path' => '',
-                'subcategory_id' => 6,  
+                'subcategory_id' => 7,  
                 'hasStock' => true, 
             ],
             [
@@ -164,7 +189,7 @@ class ProductSeeder extends Seeder
                 'price' => '360000',
                 'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/480507000001000-00-720x720.jpg',
                 'image_path' => '',
-                'subcategory_id' => 6,  
+                'subcategory_id' => 7,  
                 'hasStock' => true, 
             ],
             /* ---------- */
@@ -173,7 +198,7 @@ class ProductSeeder extends Seeder
                 'price' => '52000',
                 'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/J06161000000000-00-720x720.jpg',
                 'image_path' => '',
-                'subcategory_id' => 7,  
+                'subcategory_id' => 8,  
                 'hasStock' => true, 
             ],
             [
@@ -181,7 +206,7 @@ class ProductSeeder extends Seeder
                 'price' => '68000',
                 'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L19565000001000-00-720x720.jpg',
                 'image_path' => '',
-                'subcategory_id' => 7,  
+                'subcategory_id' => 8,  
                 'hasStock' => true, 
             ],
             [
@@ -189,7 +214,7 @@ class ProductSeeder extends Seeder
                 'price' => '75000',
                 'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/J06156000000000-00-720x720.jpg',
                 'image_path' => '',
-                'subcategory_id' => 7,  
+                'subcategory_id' => 8,  
                 'hasStock' => true, 
             ],
             /* ---------- */
@@ -198,7 +223,7 @@ class ProductSeeder extends Seeder
                 'price' => '15000',
                 'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/151258000000000-00-720x720.jpg',
                 'image_path' => '',
-                'subcategory_id' => 8,  
+                'subcategory_id' => 9,  
                 'hasStock' => true, 
             ],
             [
@@ -206,7 +231,7 @@ class ProductSeeder extends Seeder
                 'price' => '22500',
                 'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/151000000000000-00-720x720.jpg',
                 'image_path' => '',
-                'subcategory_id' => 8,  
+                'subcategory_id' => 9,  
                 'hasStock' => true, 
             ],
             [
@@ -214,7 +239,7 @@ class ProductSeeder extends Seeder
                 'price' => '380000',
                 'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/J23118000000000-00-720x720.jpg',
                 'image_path' => '',
-                'subcategory_id' => 8,  
+                'subcategory_id' => 9,  
                 'hasStock' => true, 
             ],
             /* ---------- */
