@@ -7,11 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Subcategory;
 use Exception;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
-use Cloydinary\Uploader;
-use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
