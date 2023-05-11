@@ -1,54 +1,20 @@
-<!DOCTYPE html>
+@extends("layouts.app")
+@section('title', 'Products')
+@section('content')
 
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-<head>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+                    
 
-    <title>{{ config('app.name', 'Tienda de Musica') }}</title>
-    <style>
-        body {
-            background-color: #76A9FA;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-</head>
-
-<body class="font-sans antialiased">
-    <div class="flex flex-row" class="min-h-screen bg-gray-100">
-        <nav class="w-1/4">
-            @include('layouts.navigation')
-            @if (isset($header))
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
                 </div>
-            </header>
-            @endif
-        </nav>
-        <div class="w-3/4">
-            <!-- contenido del perfil -->
+            </div>
         </div>
-    </div>
-    <main>
 
-    </main>
     </div>
-    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-</body>
-
-</html>
+@endsection
