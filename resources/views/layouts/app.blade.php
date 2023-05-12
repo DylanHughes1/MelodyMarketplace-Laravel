@@ -13,9 +13,15 @@
     <title>@yield('title')</title>
     <style>
         body {
-            background-color: #76A9FA;
+            /* background-color: #76A9FA;
             margin: 0;
-            padding: 0;
+            padding: 0; */
+            background-image: url("https://media.timeout.com/images/102747673/image.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; */
+            filter: blur(5px);
+            opacity: 0.9;
         }
         .hidden {
             display: none;
@@ -36,6 +42,7 @@
 </head>
 
 <body class="font-sans antialiased">
+    
     <div class="flex flex-row" class="min-h-screen bg-gray-100">
         <nav class="w-1/4">
             @include('layouts.navigation')
@@ -45,6 +52,7 @@
             @yield('content')
         </div>
     </div>
+
     <main>
 
     </main>
