@@ -12,20 +12,38 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 class APIProductController extends Controller
 {
     /**
- * @OA\Info(title="My First API", version="0.1")
- * 
- * @OA\Get(
- *     path="/api/users",
- *     @OA\Response(response="200", description="An example endpoint")
- * )
- */
+     * @OA\Get(
+     *     path="/api/products",
+     *     summary="Get all products with categories and subcategories",
+     *     tags={"Products"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                  property="products", 
+     *                  type="array", 
+     *                  @OA\Items(ref="#/components/schemas/Product")),
+     *             @OA\Property(
+     *                  property="categories", 
+     *                  type="array", 
+     *                  @OA\Items(ref="#/components/schemas/Category")),
+     *             @OA\Property(
+     *                  property="subcategories", 
+     *                  type="array", 
+     *                  @OA\Items(ref="#/components/schemas/Subcategory"))
+     *         )
+     *     )
+     * )
+     */
 
-    public function index(){
+    public function index()
+    {
 
         $products = Product::orderBy('id', 'asc')->get();
         $categories = Category::all();
         $subcategories = Subcategory::all();
-        
+
         return response()->json([
             'products' => $products,
             'categories' => $categories,
@@ -33,7 +51,23 @@ class APIProductController extends Controller
         ]);
     }
 
-    public function create(){
+    /**
+     * @OA\Get(
+     *     path="/api/products/create",
+     *     summary="Get categories and subcategories for creating a new product",
+     *     tags={"Products"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="categories", type="array", @OA\Items(ref="#/components/schemas/Category")),
+     *             @OA\Property(property="subcategories", type="array", @OA\Items(ref="#/components/schemas/Subcategory"))
+     *         )
+     *     )
+     * )
+     */
+    public function create()
+    {
 
         $categories = Category::all();
         $subcategories = Subcategory::all();
@@ -43,8 +77,40 @@ class APIProductController extends Controller
         ]);
     }
 
-    public function store(Request $request){
-        
+    /**
+     * @OA\Post(
+     *     path="/api/products/create",
+     *     summary="Create a new product",
+     *     tags={"Products"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="Product data",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="name", type="string", maxLength=255),
+     *             @OA\Property(property="price", type="integer", minimum=1),
+     *             @OA\Property(property="subcategory", type="integer"),
+     *             @OA\Property(property="image", type="string", format="binary")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Product created successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad request",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     )
+     * )
+     */
+    public function store(Request $request)
+    {
+
         $request->validate([
             'name' => 'required|max:255',
             'price' => 'required|integer|gt:0',
@@ -52,10 +118,10 @@ class APIProductController extends Controller
             'image' => 'required|image|max:1000'
         ]);
 
-        try{
+        try {
             $image = $request->file('image');
             $uploadedFile = $image->storeOnCloudinary('/products');
-        }catch (Exception $e){
+        } catch (Exception $e) {
             return response()->json([
                 'message' => "Ocurrió un error al almacenar la imagen\n"
             ], 400);
@@ -76,10 +142,52 @@ class APIProductController extends Controller
         ], 201);
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/products/{id}",
+     *     summary="Muestra un producto especifico a partir de in ID",
+     *     tags={"Products"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID of the product",
+     *         @OA\Schema(
+     *             type="string"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                  property="product", 
+     *                  ref="#/components/schemas/product"),
+     *             @OA\Property(
+     *                  property="categories", 
+     *                  type="array", 
+     *                  @OA\Items(ref="#/components/schemas/category")),
+     *             @OA\Property(
+     *                  property="subcategories", 
+     *                  type="array", 
+     *                  @OA\Items(ref="#/components/schemas/subcategory"))
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Product not found",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                  property="error", 
+     *                  type="string")
+     *         )
+     *     )
+     * )
+     */
     public function show(string $id)
     {
         $product = Product::find($id);
-        if($product == null)
+        if ($product == null)
             return response()->json(['error' => 'Producto no encontrado'], 404);
 
         $categories = Category::all();
@@ -91,13 +199,48 @@ class APIProductController extends Controller
             'subcategories' => $subcategories
         ]);
     }
+
+    /**
+     * @OA\Put(
+     *     path="/api/products/{id}/disable",
+     *     summary="Deshabilita el producto mediante el stock",
+     *     tags={"Products"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID of the product",
+     *         @OA\Schema(
+     *             type="string"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Image edited successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                  property="message", 
+     *                  type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Product not found",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                  property="error", 
+     *                  type="string")
+     *         )
+     *     )
+     * )
+     */
     public function editImage(string $id)
     {
         $product = Product::find($id);
-        if($product == null)
+        if ($product == null)
             return response()->json(['error' => 'Producto no encontrado'], 404);
 
-        if($product->hasStock)
+        if ($product->hasStock)
             $product->hasStock = false;
         $product->save();
 
@@ -106,10 +249,75 @@ class APIProductController extends Controller
         ], 201);
     }
 
+    /**
+     * @OA\Put(
+     *     path="/api/products/{id}",
+     *     summary="Actualiza el producto identifico por el ID",
+     *     tags={"Products"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID of the product",
+     *         @OA\Schema(
+     *             type="string"
+     *         )
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="Product data",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                  property="name", 
+     *                  type="string", 
+     *                  maxLength=255),
+     *             @OA\Property(
+     *                  property="price", 
+     *                  type="number", 
+     *                  format="float", 
+     *                  minimum=0),
+     *             @OA\Property(
+     *                  property="subcategory", 
+     *                  type="integer"),
+     *             @OA\Property(
+     *                  property="image", 
+     *                  type="string", 
+     *                  format="binary")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Product updated successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                  property="message", 
+     *                  type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad request",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                  property="message", 
+     *                  type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Product not found",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                  property="error", 
+     *                  type="string")
+     *         )
+     *     )
+     * )
+     */
     public function update(Request $request, string $id)
     {
         $product = Product::find($id);
-        if($product == null)
+        if ($product == null)
             return response()->json(['error' => 'Producto no encontrado'], 404);
 
         $request->validate([
@@ -127,8 +335,8 @@ class APIProductController extends Controller
                 'image' => 'required|image|max:1000'
             ]);
 
-            if($product->image_path != null){
-                Cloudinary::destroy($product->image_path);  
+            if ($product->image_path != null) {
+                Cloudinary::destroy($product->image_path);
             }
 
             $image = $request->file('image');
@@ -143,5 +351,4 @@ class APIProductController extends Controller
             'message' => 'Product updated successfully'
         ], 201);
     }
-
-    }
+}
