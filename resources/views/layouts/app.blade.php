@@ -19,7 +19,7 @@
             background-image: url("https://media.timeout.com/images/102747673/image.jpg");
             background-size: cover;
             background-repeat: no-repeat;
-            background-attachment: fixed; */
+            background-attachment: fixed;
             filter: blur(5px);
             opacity: 0.9;
         }
