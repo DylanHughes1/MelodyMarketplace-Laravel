@@ -10,32 +10,59 @@
                 "tags": [
                     "Categories"
                 ],
-                "summary": "Obtiene todas las categorías",
-                "operationId": "getCategories",
+                "summary": "Obtiene todas las categorias.",
+                "operationId": "567bebc5b6d654df969726dfe16e0085",
                 "responses": {
                     "200": {
-                        "description": "Return all categories",
+                        "description": "All categories obtained.",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "type": "string",
-                                        "format": "id"
+                                        "properties": {
+                                            "id": {
+                                                "description": "Category ID.",
+                                                "type": "integer"
+                                            },
+                                            "name": {
+                                                "description": "Category name.",
+                                                "type": "string"
+                                            },
+                                            "image_link": {
+                                                "description": "Link to the category image.",
+                                                "type": "string"
+                                            },
+                                            "image_path": {
+                                                "description": "Category image path in Cloudinary.",
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "description": "Date when the category was created.",
+                                                "type": "string",
+                                                "format": "date"
+                                            },
+                                            "updated_at": {
+                                                "description": "Date when the category was updated.",
+                                                "type": "string",
+                                                "format": "date"
+                                            }
+                                        },
+                                        "type": "object"
                                     }
                                 }
                             }
                         }
                     },
-                    "500": {
-                        "description": "Server error",
+                    "404": {
+                        "description": "Categories not found.",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Internal server error"
+                                        "error": {
+                                            "description": "Error message.",
+                                            "type": "string"
                                         }
                                     },
                                     "type": "object"
@@ -52,21 +79,17 @@
                 "summary": "Crear una nueva categoría",
                 "operationId": "ab54f90b49689a1bf027f7cdffdeefe8",
                 "requestBody": {
-                    "description": "Data needed to create a new category",
                     "required": true,
                     "content": {
-                        "application/json": {
+                        "multipart/form-data": {
                             "schema": {
-                                "required": [
-                                    "name",
-                                    "image"
-                                ],
                                 "properties": {
                                     "name": {
-                                        "type": "string",
-                                        "example": "Nueva categoría"
+                                        "description": "Category name",
+                                        "type": "string"
                                     },
                                     "image": {
+                                        "description": "Image to upload",
                                         "type": "string",
                                         "format": "binary"
                                     }
@@ -141,49 +164,6 @@
                 }
             }
         },
-        "/api/categories/create": {
-            "get": {
-                "tags": [
-                    "Categories"
-                ],
-                "summary": "Mostrar formulario para crear una nueva categoría",
-                "operationId": "ed784f86782fd2341b76637ac0e92710",
-                "responses": {
-                    "200": {
-                        "description": "Returns a list of categories with their id, name and image link",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "categories": {
-                                            "type": "array",
-                                            "items": {
-                                                "properties": {
-                                                    "id": {
-                                                        "type": "integer",
-                                                        "example": "1"
-                                                    },
-                                                    "name": {
-                                                        "type": "string",
-                                                        "example": "Categoría 1"
-                                                    },
-                                                    "image_link": {
-                                                        "type": "string",
-                                                        "example": "https://example.com/image.jpg"
-                                                    }
-                                                },
-                                                "type": "object"
-                                            }
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/api/categories/{id}": {
             "get": {
                 "tags": [
@@ -199,8 +179,8 @@
                         "description": "Category ID to get",
                         "required": true,
                         "schema": {
-                            "type": "string",
-                            "format": "uuid"
+                            "type": "integer",
+                            "format": "id"
                         }
                     }
                 ],
@@ -226,6 +206,16 @@
                                         "image_path": {
                                             "description": "Category image path in Cloudinary.",
                                             "type": "string"
+                                        },
+                                        "created_at": {
+                                            "description": "Date when the category was created.",
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "updated_at": {
+                                            "description": "Date when the category was updated.",
+                                            "type": "string",
+                                            "format": "date"
                                         }
                                     },
                                     "type": "object"
@@ -274,7 +264,16 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "type": "string"
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Nombre de la categoría"
+                                    }
+                                },
+                                "type": "object"
                             }
                         }
                     }
@@ -547,7 +546,8 @@
                                 "schema": {
                                     "properties": {
                                         "message": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "example": "Ocurrió un error al obtener las subcategorías."
                                         }
                                     },
                                     "type": "object"

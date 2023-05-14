@@ -13,74 +13,67 @@ class APICategoryController extends Controller
     /**
      * @OA\Get(
      *     path="/api/categories",
-     *     summary="Obtiene todas las categorías",
-     *     operationId="getCategories",
+     *     summary="Obtiene todas las categorias.",
      *     tags={"Categories"},
      *     @OA\Response(
      *         response="200",
-     *         description="Return all categories",
+     *         description="All categories obtained.",
      *         @OA\JsonContent(
      *             type="array",
-     *             @OA\Items(type="string", format="id")
+     *             @OA\Items(
+     *                 type="object",
+     *                 @OA\Property(
+     *                     property="id",
+     *                     type="integer",
+     *                     description="Category ID."
+     *                 ),
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string",
+     *                     description="Category name."
+     *                 ),
+     *                 @OA\Property(
+     *                     property="image_link",
+     *                     type="string",
+     *                     description="Link to the category image."
+     *                 ),
+     *                 @OA\Property(
+     *                     property="image_path",
+     *                     type="string",
+     *                     description="Category image path in Cloudinary."
+     *                 ),
+     *                 @OA\Property(
+     *                     property="created_at",
+     *                     type="date",
+     *                     description="Date when the category was created."
+     *                 ),
+     *                 @OA\Property(
+     *                     property="updated_at",
+     *                     type="date",
+     *                     description="Date when the category was updated."
+     *                 ),
+     *             )
      *         )
      *     ),
      *     @OA\Response(
-     *         response="500",
-     *         description="Server error",
+     *         response="404",
+     *         description="Categories not found.",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="Internal server error")
+     *             type="object",
+     *             @OA\Property(
+     *                 property="error",
+     *                 type="string",
+     *                 description="Error message."
+     *             ),
      *         )
-     *     )
+     *     ),
      * )
      */
+
     public function index()
     {
         $categories = Category::orderBy('id', 'asc')->get();
         return response()->json(['categories' => $categories]);
-    }
-
-    /**
-     * @OA\Get(
-     *     path="/api/categories/create",
-     *     summary="Mostrar formulario para crear una nueva categoría",
-     *     tags={"Categories"},
-     *     @OA\Response(
-     *         response=200,
-     *         description="Returns a list of categories with their id, name and image link",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(
-     *                 property="categories",
-     *                 type="array",
-     *                 @OA\Items(
-     *                     type="object",
-     *                     @OA\Property(
-     *                         property="id",
-     *                         type="integer",
-     *                         example="1"
-     *                     ),
-     *                     @OA\Property(
-     *                         property="name",
-     *                         type="string",
-     *                         example="Categoría 1"
-     *                     ),
-     *                     @OA\Property(
-     *                         property="image_link",
-     *                         type="string",
-     *                         example="https://example.com/image.jpg"
-     *                     )
-     *                 )
-     *             )
-     *         )
-     *     )
-     * )
-     */
-    public function create()
-    {
-        $categories = Category::select('id', 'name', 'image_link')
-            ->orderBy('id', 'asc')
-            ->get();
-        return response()->json($categories);
     }
 
     /**
@@ -90,18 +83,20 @@ class APICategoryController extends Controller
      *     tags={"Categories"},
      *     @OA\RequestBody(
      *         required=true,
-     *         description="Data needed to create a new category",
-     *         @OA\JsonContent(
-     *             required={"name", "image"},
-     *             @OA\Property(
-     *                 property="name",
-     *                 type="string",
-     *                 example="Nueva categoría"
-     *             ),
-     *             @OA\Property(
-     *                 property="image",
-     *                 type="string",
-     *                 format="binary"
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                     @OA\Property(
+     *                      property="name",
+     *                      description="Category name",
+     *                      type="string"
+     *                 ),
+     *                     @OA\Property(
+     *                      property="image",
+     *                      description="Image to upload",
+     *                      type="string",
+     *                      format="binary"
+     *                 )
      *             )
      *         )
      *     ),
@@ -203,7 +198,15 @@ class APICategoryController extends Controller
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(type="string")
+     *         @OA\JsonContent(
+     *             required={"name"},
+     *             @OA\Property(
+     *                 property="name",
+     *                 type="string",
+     *                 example="Nombre de la categoría"
+     *             )
+     *         )
+     *  
      *     ),
      *     @OA\Response(
      *         response="200",
@@ -281,8 +284,8 @@ class APICategoryController extends Controller
      *         description="Category ID to get",
      *         required=true,
      *         @OA\Schema(
-     *             type="string",
-     *             format="uuid"
+     *             type="integer",
+     *             format="id"
      *         )
      *     ),
      *     @OA\Response(
@@ -309,7 +312,17 @@ class APICategoryController extends Controller
      *                 property="image_path",
      *                 type="string",
      *                 description="Category image path in Cloudinary."
-     *             )
+     *             ),
+     *             @OA\Property(
+     *                 property="created_at",
+     *                 type="date",
+     *                 description="Date when the category was created."
+     *             ),
+     *             @OA\Property(
+     *                 property="updated_at",
+     *                 type="date",
+     *                 description="Date when the category was updated."
+     *             ),
      *         )
      *     ),
      *     @OA\Response(
