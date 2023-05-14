@@ -11,6 +11,15 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class APIProductController extends Controller
 {
+    /**
+ * @OA\Info(title="My First API", version="0.1")
+ * 
+ * @OA\Get(
+ *     path="/api/users",
+ *     @OA\Response(response="200", description="An example endpoint")
+ * )
+ */
+
     public function index(){
 
         $products = Product::orderBy('id', 'asc')->get();
