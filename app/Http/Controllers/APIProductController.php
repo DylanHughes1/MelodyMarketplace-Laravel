@@ -241,6 +241,7 @@ class APIProductController extends Controller
             return response()->json(['error' => 'Producto no encontrado'], 404);
 
         if ($product->hasStock)
+        if ($product->hasStock)
             $product->hasStock = false;
         $product->save();
 
@@ -318,6 +319,7 @@ class APIProductController extends Controller
     {
         $product = Product::find($id);
         if ($product == null)
+        if ($product == null)
             return response()->json(['error' => 'Producto no encontrado'], 404);
 
         $request->validate([
@@ -335,6 +337,8 @@ class APIProductController extends Controller
                 'image' => 'required|image|max:1000'
             ]);
 
+            if ($product->image_path != null) {
+                Cloudinary::destroy($product->image_path);
             if ($product->image_path != null) {
                 Cloudinary::destroy($product->image_path);
             }
