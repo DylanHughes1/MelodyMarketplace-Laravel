@@ -546,8 +546,7 @@
                                 "schema": {
                                     "properties": {
                                         "message": {
-                                            "type": "string",
-                                            "example": "Ocurrió un error al obtener las subcategorías."
+                                            "type": "string"
                                         }
                                     },
                                     "type": "object"
@@ -745,6 +744,355 @@
                         }
                     }
                 }
+            }
+        },
+        "/api/subcategories": {
+            "get": {
+                "tags": [
+                    "Subcategories"
+                ],
+                "summary": "Obtiene todas las subcategorias.",
+                "operationId": "3ea348b9aaa850ce0b004c1ece394df5",
+                "responses": {
+                    "200": {
+                        "description": "All subcategories obtained.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "description": "Subcategory ID.",
+                                                "type": "integer"
+                                            },
+                                            "name": {
+                                                "description": "Subcategory name.",
+                                                "type": "string"
+                                            },
+                                            "image_link": {
+                                                "description": "Link to the subcategory image.",
+                                                "type": "string"
+                                            },
+                                            "image_path": {
+                                                "description": "Subcategory image path in Cloudinary.",
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "description": "Date when the subcategory was created.",
+                                                "type": "string",
+                                                "format": "date"
+                                            },
+                                            "updated_at": {
+                                                "description": "Date when the subcategory was updated.",
+                                                "type": "string",
+                                                "format": "date"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Subcategories not found.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "Error message.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Subcategories"
+                ],
+                "summary": "Crear una nueva subcategoría",
+                "operationId": "a6583b414eee5ebb81ab31f099773fb9",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Subcategory name",
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "description": "Image to upload",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Subcategory created correctly",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "La subcategoría se creó con éxito."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Los datos proporcionados no son válidos."
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "example": {
+                                                "name": [
+                                                    "El campo nombre es obligatorio."
+                                                ],
+                                                "image": [
+                                                    "El campo imagen es obligatorio.",
+                                                    "El campo imagen debe ser una imagen.",
+                                                    "El campo imagen no debe ser mayor de 1000 kilobytes."
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Ocurrió un error al almacenar la imagen."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/subcategories/{id}": {
+            "get": {
+                "tags": [
+                    "Subcategories"
+                ],
+                "summary": "Obtener una subcategoria por su ID",
+                "description": "You get a subcategory specified by your ID.",
+                "operationId": "695b064d48f37281bb90a581780f1e4b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Subcategory ID to get",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Subcategory obtained correctly.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "Subcategory ID.",
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "description": "Subcategory name.",
+                                            "type": "string"
+                                        },
+                                        "image_link": {
+                                            "description": "Link to the Subcategory image.",
+                                            "type": "string"
+                                        },
+                                        "image_path": {
+                                            "description": "Subcategory image path in Cloudinary.",
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "description": "Date when the subcategory was created.",
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "updated_at": {
+                                            "description": "Date when the subcategory was updated.",
+                                            "type": "string",
+                                            "format": "date"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "The subcategory does not exist.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "Error message stating that the subcategory does not exist.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Subcategories"
+                ],
+                "summary": "Actualiza una subcategoría existente.",
+                "operationId": "265cb677741b822620dc592e9fd40707",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Subcategory ID to update.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Nombre de la subcategoría"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Subcategory updated correctly.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Subcategoría actualizada correctamente."
+                                        },
+                                        "subcategory": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Malformed or missing fields required.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "La solicitud es inválida."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "The specified subcategory does not exist.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "La subcategoría especificada no existe."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error when upgrading the subcategory.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Ocurrió un error al actualizar la subcategoría."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         }
     }
