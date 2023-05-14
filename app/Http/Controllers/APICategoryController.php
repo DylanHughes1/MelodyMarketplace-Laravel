@@ -6,15 +6,75 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use Exception;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use OpenApi\Annotations as OA;
 
 class APICategoryController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/api/categories",
+     *     summary="Obtiene todas las categorías",
+     *     operationId="getCategories",
+     *     tags={"Categories"},
+     *     @OA\Response(
+     *         response="200",
+     *         description="Return all categories",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(type="string", format="id")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response="500",
+     *         description="Server error",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Internal server error")
+     *         )
+     *     )
+     * )
+     */
     public function index()
     {
         $categories = Category::orderBy('id', 'asc')->get();
         return response()->json(['categories' => $categories]);
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/categories/create",
+     *     summary="Mostrar formulario para crear una nueva categoría",
+     *     tags={"Categories"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Returns a list of categories with their id, name and image link",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="categories",
+     *                 type="array",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(
+     *                         property="id",
+     *                         type="integer",
+     *                         example="1"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="name",
+     *                         type="string",
+     *                         example="Categoría 1"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="image_link",
+     *                         type="string",
+     *                         example="https://example.com/image.jpg"
+     *                     )
+     *                 )
+     *             )
+     *         )
+     *     )
+     * )
+     */
     public function create()
     {
         $categories = Category::select('id', 'name', 'image_link')
@@ -23,6 +83,80 @@ class APICategoryController extends Controller
         return response()->json($categories);
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/categories",
+     *     summary="Crear una nueva categoría",
+     *     tags={"Categories"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="Data needed to create a new category",
+     *         @OA\JsonContent(
+     *             required={"name", "image"},
+     *             @OA\Property(
+     *                 property="name",
+     *                 type="string",
+     *                 example="Nueva categoría"
+     *             ),
+     *             @OA\Property(
+     *                 property="image",
+     *                 type="string",
+     *                 format="binary"
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Category created correctly",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="message",
+     *                 type="string",
+     *                 example="La categoría se creó con éxito."
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Validation error",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="message",
+     *                 type="string",
+     *                 example="Los datos proporcionados no son válidos."
+     *             ),
+     *             @OA\Property(
+     *                 property="errors",
+     *                 type="object",
+     *                 example={
+     *                     "name": {
+     *                         "El campo nombre es obligatorio."
+     *                     },
+     *                     "image": {
+     *                         "El campo imagen es obligatorio.",
+     *                         "El campo imagen debe ser una imagen.",
+     *                         "El campo imagen no debe ser mayor de 1000 kilobytes."
+     *                     }
+     *                 }
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal server error",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="message",
+     *                 type="string",
+     *                 example="Ocurrió un error al almacenar la imagen."
+     *             )
+     *         )
+     *     )
+     * )
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -52,6 +186,59 @@ class APICategoryController extends Controller
     {
     }
 
+    /**
+     * @OA\Put(
+     *     path="/api/categories/{id}",
+     *     summary="Actualiza una categoría existente.",
+     *     tags={"Categories"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         description="Category ID to update.",
+     *         required=true,
+     *         in="path",
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64",
+     *         )
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Category updated correctly.",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Categoría actualizada correctamente."),
+     *             @OA\Property(property="category", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response="400",
+     *         description="Malformed or missing fields required.",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="La solicitud es inválida.")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="The specified category does not exist.",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message",type="string", example="La categoría especificada no existe.")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response="500",
+     *         description="Server error when upgrading the category.",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Ocurrió un error al actualizar la categoría.")
+     *         )
+     *     ),
+     *     security={
+     *         {"bearerAuth": {}}
+     *     }
+     * )
+     */
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -82,7 +269,63 @@ class APICategoryController extends Controller
         return response()->json(['message' => 'Categoría actualizada correctamente.', 'category' => $category], 200);
     }
 
-
+    /**
+     * @OA\Get(
+     *     path="/api/categories/{id}",
+     *     summary="Obtener una categoría por su ID",
+     *     description="You get a category specified by your ID.",
+     *     tags={"Categories"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="Category ID to get",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string",
+     *             format="uuid"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Category obtained correctly.",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="id",
+     *                 type="integer",
+     *                 description="Category ID."
+     *             ),
+     *             @OA\Property(
+     *                 property="name",
+     *                 type="string",
+     *                 description="Category name."
+     *             ),
+     *             @OA\Property(
+     *                 property="image_link",
+     *                 type="string",
+     *                 description="Link to the category image."
+     *             ),
+     *             @OA\Property(
+     *                 property="image_path",
+     *                 type="string",
+     *                 description="Category image path in Cloudinary."
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="The category does not exist.",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="error",
+     *                 type="string",
+     *                 description="Error message stating that the category does not exist."
+     *             )
+     *         )
+     *     )
+     * )
+     */
     public function show(string $id)
     {
         $category = Category::find($id);
@@ -93,7 +336,6 @@ class APICategoryController extends Controller
 
         return response()->json($category);
     }
-
 
     public function destroy($id)
     {

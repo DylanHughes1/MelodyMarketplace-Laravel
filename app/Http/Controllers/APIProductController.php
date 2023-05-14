@@ -11,21 +11,14 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class APIProductController extends Controller
 {
-    /**
- * @OA\Info(title="My First API", version="0.1")
- * 
- * @OA\Get(
- *     path="/api/users",
- *     @OA\Response(response="200", description="An example endpoint")
- * )
- */
 
-    public function index(){
+    public function index()
+    {
 
         $products = Product::orderBy('id', 'asc')->get();
         $categories = Category::all();
         $subcategories = Subcategory::all();
-        
+
         return response()->json([
             'products' => $products,
             'categories' => $categories,
@@ -33,7 +26,8 @@ class APIProductController extends Controller
         ]);
     }
 
-    public function create(){
+    public function create()
+    {
 
         $categories = Category::all();
         $subcategories = Subcategory::all();
@@ -43,8 +37,9 @@ class APIProductController extends Controller
         ]);
     }
 
-    public function store(Request $request){
-        
+    public function store(Request $request)
+    {
+
         $request->validate([
             'name' => 'required|max:255',
             'price' => 'required|integer|gt:0',
@@ -52,10 +47,10 @@ class APIProductController extends Controller
             'image' => 'required|image|max:1000'
         ]);
 
-        try{
+        try {
             $image = $request->file('image');
             $uploadedFile = $image->storeOnCloudinary('/products');
-        }catch (Exception $e){
+        } catch (Exception $e) {
             return response()->json([
                 'message' => "Ocurrió un error al almacenar la imagen\n"
             ], 400);
@@ -79,7 +74,7 @@ class APIProductController extends Controller
     public function show(string $id)
     {
         $product = Product::find($id);
-        if($product == null)
+        if ($product == null)
             return response()->json(['error' => 'Producto no encontrado'], 404);
 
         $categories = Category::all();
@@ -94,10 +89,10 @@ class APIProductController extends Controller
     public function editImage(string $id)
     {
         $product = Product::find($id);
-        if($product == null)
+        if ($product == null)
             return response()->json(['error' => 'Producto no encontrado'], 404);
 
-        if($product->hasStock)
+        if ($product->hasStock)
             $product->hasStock = false;
         $product->save();
 
@@ -109,7 +104,7 @@ class APIProductController extends Controller
     public function update(Request $request, string $id)
     {
         $product = Product::find($id);
-        if($product == null)
+        if ($product == null)
             return response()->json(['error' => 'Producto no encontrado'], 404);
 
         $request->validate([
@@ -127,8 +122,8 @@ class APIProductController extends Controller
                 'image' => 'required|image|max:1000'
             ]);
 
-            if($product->image_path != null){
-                Cloudinary::destroy($product->image_path);  
+            if ($product->image_path != null) {
+                Cloudinary::destroy($product->image_path);
             }
 
             $image = $request->file('image');
@@ -143,5 +138,4 @@ class APIProductController extends Controller
             'message' => 'Product updated successfully'
         ], 201);
     }
-
-    }
+}
