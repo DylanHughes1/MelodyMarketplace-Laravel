@@ -34,7 +34,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Gibson ES-335 Figured Semi-Hollow',
                 'price' => '1000000',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L72812000006000-00-720x720.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L73705000001000-00-720x720.jpg',
                 'image_path' => '',
                 'subcategory_id' => 1,  
                 'hasStock' => true, 

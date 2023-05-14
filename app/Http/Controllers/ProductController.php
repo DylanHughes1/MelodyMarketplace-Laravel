@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Subcategory;
 use Exception;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -78,15 +79,15 @@ class ProductController extends Controller
     public function show(string $id)
     {
         $product = Product::find($id);
-        $categories = Category::all();
-        $subcategories = Subcategory::all();
         if($product==null)
             abort(404);
 
-        return view('products.show')
-            ->with('product',$product)
-            ->with('categories',$categories)
-            ->with('subcategories',$subcategories);
+        $subcategories = Subcategory::all();
+        $category = Category::find($product->subcategory->category);
+
+        return view('products.create')
+            ->with('category', $category)
+            ->with('subcategories', $subcategories);
     }
 
     /**
