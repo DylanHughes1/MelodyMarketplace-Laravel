@@ -546,8 +546,7 @@
                                 "schema": {
                                     "properties": {
                                         "message": {
-                                            "type": "string",
-                                            "example": "Ocurrió un error al obtener las subcategorías."
+                                            "type": "string"
                                         }
                                     },
                                     "type": "object"
@@ -629,7 +628,8 @@
                         "description": "ID of the product",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "integer",
+                            "format": "int64"
                         }
                     }
                 ],
@@ -644,9 +644,8 @@
                                         "maxLength": 255
                                     },
                                     "price": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "exclusiveMinimum": false
+                                        "type": "integer",
+                                        "minimum": 1
                                     },
                                     "subcategory": {
                                         "type": "integer"
@@ -662,8 +661,23 @@
                     }
                 },
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "Product updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error or error storing image",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -707,7 +721,6 @@
                         "name": "id",
                         "in": "path",
                         "description": "Product ID",
-                        "required": true,
                         "schema": {
                             "type": "string"
                         }
