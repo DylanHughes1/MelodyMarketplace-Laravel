@@ -169,31 +169,31 @@ class APIProductController extends Controller
      *     path="/api/products/{id}",
      *     summary="Muestra un producto especifico a partir de un ID",
      *     tags={"Products"},
- *     @OA\Parameter(
- *         name="id",
- *         in="path",
- *         description="Product ID",
- *         required=true,
- *         @OA\Schema(type="string")
- *     ),
- *     @OA\Response(
- *         response=200,
- *         description="Product details",
- *         @OA\JsonContent(
- *             @OA\Property(property="product", type="object"),
- *             @OA\Property(property="category", type="object"),
- *             @OA\Property(property="subcategories", type="array", @OA\Items())
- *         )
- *     ),
- *     @OA\Response(
- *         response=404,
- *         description="Product not found",
- *         @OA\JsonContent(
- *             @OA\Property(property="error", type="string")
- *         )
- *     )
- * )
- */
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="Product ID",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Product details",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="product", type="object"),
+     *             @OA\Property(property="category", type="object"),
+     *             @OA\Property(property="subcategories", type="array", @OA\Items())
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Product not found",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="error", type="string")
+     *         )
+     *     )
+     * )
+     */
     public function show(string $id)
     {
         $product = Product::find($id);
@@ -201,11 +201,10 @@ class APIProductController extends Controller
             return response()->json(['error' => 'Producto no encontrado'], 404);
 
         $subcategories = Subcategory::all();
-        $category = Category::find($product->subcategory->category);
 
         return response()->json([
             'product' => $product,
-            'category' => $category,
+            'category' => $product->subcategory->category,
             'subcategories' => $subcategories
         ]);
     }
@@ -219,7 +218,7 @@ class APIProductController extends Controller
      *         name="id",
      *         in="path",
      *         description="Product ID",
-     *         required=true,
+     *         
      *         @OA\Schema(type="string")
      *     ),
      *     @OA\Response(
@@ -254,7 +253,7 @@ class APIProductController extends Controller
         ], 201);
     }
 
-/**
+    /**
      * @OA\Put(
      *     path="/api/products/{id}",
      *     summary="Actualiza el producto identificado por el ID",
@@ -265,25 +264,32 @@ class APIProductController extends Controller
      *         required=true,
      *         description="ID of the product",
      *         @OA\Schema(
-     *             type="string"
+     *             type="integer",
+     *             format="int64",
      *         )
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\MediaType(
+     *          @OA\MediaType(
      *             mediaType="multipart/form-data",
      *             @OA\Schema(
-     *                 type="object",
      *                 @OA\Property(property="name", type="string", maxLength=255),
-     *                 @OA\Property(property="price", type="number", format="float", exclusiveMinimum=false),
+     *                 @OA\Property(property="price", type="integer", minimum=1),
      *                 @OA\Property(property="subcategory", type="integer"),
-     *                 @OA\Property(property="image", type="string", format="binary"),
+     *                 @OA\Property(property="image", type="string", format="binary")
      *             )
      *         )
      *     ),
      *     @OA\Response(
-     *         response=201,
+     *         response=200,
      *         description="Product updated successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Validation error or error storing image",
      *         @OA\JsonContent(
      *             @OA\Property(property="message", type="string")
      *         )
@@ -303,7 +309,7 @@ class APIProductController extends Controller
         if ($product == null)
             if ($product == null)
                 return response()->json(['error' => 'Producto no encontrado'], 404);
-
+            
         $request->validate([
             'name' => 'string|max:255',
             'price' => 'nullable|numeric|gt:0',
@@ -313,12 +319,8 @@ class APIProductController extends Controller
         $product->name = $request->input('name');
         $product->price = $request->input('price');
         $product->subcategory_id = $request->input('subcategory');
-
         if ($request->has('image')) {
-            $request->validate([
-                'image' => 'required|image|max:1000'
-            ]);
-
+                        
             if ($product->image_path != null) {
                 Cloudinary::destroy($product->image_path);
                 if ($product->image_path != null) {
@@ -330,12 +332,13 @@ class APIProductController extends Controller
                 $product->image_link = $uploadedFile->getSecurePath();
                 $product->image_path = $uploadedFile->getPublicId();
             }
-
+            
             $product->save();
 
             return response()->json([
                 'message' => 'Product updated successfully'
-            ], 201);
+            ], 200);
         }
+        return response()->json(['message' => 'Ocurrió un error al almacenar la imagen.'], 500);
     }
 }

@@ -83,10 +83,9 @@ class ProductController extends Controller
             abort(404);
 
         $subcategories = Subcategory::all();
-        $category = Category::find($product->subcategory->category);
 
-        return view('products.create')
-            ->with('category', $category)
+        return view('products.show')
+            ->with('product', $product)
             ->with('subcategories', $subcategories);
     }
 
