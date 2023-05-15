@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\APISubCategoryController;
 use App\Http\Controllers\APICategoryController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\APIProductController;
 
