@@ -236,11 +236,7 @@ class APICategoryController extends Controller
      *         @OA\JsonContent(
      *             @OA\Property(property="message", type="string", example="Ocurrió un error al actualizar la categoría.")
      *         )
-     *     ),
-     *     security={
-     *         {"bearerAuth": {}}
-     *     }
-     * )
+     *     ) 
      */
     public function update(Request $request, $id)
     {
