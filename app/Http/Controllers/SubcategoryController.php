@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Subcategory;
+use App\Models\Category;
 use Exception;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
@@ -25,7 +26,10 @@ class SubcategoryController extends Controller
         $subcategories = Subcategory::select('id', 'name', 'image_link')
                 ->orderBy('id', 'asc')
                 ->get();
-        return view('subcategories.create')->with('subcategories',$subcategories);
+        $categories = Category::all();
+        return view('subcategories.create')
+            ->with('subcategories',$subcategories)
+            ->with('categories',$categories);
     }
 
     /**
@@ -47,6 +51,7 @@ class SubcategoryController extends Controller
 
         $subcategory = new Subcategory();
         $subcategory->name = $request->get('name');
+        $subcategory->category_id = $request->get('category');
         $subcategory->image_link = $uploadedFile->getPath();
         $subcategory->image_path = $uploadedFile->getPublicId();
 
