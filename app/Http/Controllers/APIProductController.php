@@ -14,7 +14,7 @@ class APIProductController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/products",
+     *     path="/rest/products",
      *     summary="Obtiene todos los productos con las categorías y subcategorías",
      *     tags={"Products"},
      *     @OA\Response(
@@ -62,7 +62,7 @@ class APIProductController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/products/",
+     *     path="/rest/products/",
      *     summary="Obtiene todas las categorias y subcategorías",
      *     tags={"Products"},
      *     @OA\Response(
@@ -98,7 +98,7 @@ class APIProductController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/products/create",
+     *     path="/rest/products/create",
      *     summary="Crea y almacena un nuevo producto",
      *     tags={"Products"},
      *     @OA\RequestBody(
@@ -166,7 +166,7 @@ class APIProductController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/products/{id}",
+     *     path="/rest/products/{id}",
      *     summary="Muestra un producto especifico a partir de un ID",
      *     tags={"Products"},
      *     @OA\Parameter(
@@ -211,7 +211,7 @@ class APIProductController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/products/{id}/disable",
+     *     path="/rest/products/{id}/disable",
      *     summary="Deshabilita el producto mediante el stock",
      *     tags={"Products"},
      *     @OA\Parameter(
@@ -255,7 +255,7 @@ class APIProductController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/products/{id}",
+     *     path="/rest/products/{id}",
      *     summary="Actualiza el producto identificado por el ID",
      *     tags={"Products"},
      *     @OA\Parameter(

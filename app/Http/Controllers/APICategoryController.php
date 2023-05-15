@@ -12,7 +12,7 @@ class APICategoryController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/categories",
+     *     path="/rest/categories",
      *     summary="Obtiene todas las categorias.",
      *     tags={"Categories"},
      *     @OA\Response(
@@ -78,7 +78,7 @@ class APICategoryController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/categories",
+     *     path="/rest/categories",
      *     summary="Crear una nueva categoría",
      *     tags={"Categories"},
      *     @OA\RequestBody(
@@ -183,7 +183,7 @@ class APICategoryController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/categories/{id}",
+     *     path="/rest/categories/{id}",
      *     summary="Actualiza una categoría existente.",
      *     tags={"Categories"},
      *     @OA\Parameter(
@@ -274,7 +274,7 @@ class APICategoryController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/categories/{id}",
+     *     path="/rest/categories/{id}",
      *     summary="Obtener una categoría por su ID",
      *     description="You get a category specified by your ID.",
      *     tags={"Categories"},

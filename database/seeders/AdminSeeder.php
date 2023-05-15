@@ -15,7 +15,7 @@ class AdminSeeder extends Seeder
         $data = [
             [
                 'name' => 'Martin Hughes',
-                'email' => 'martin_hughes@outlook.com',
+                'email' => 'martinmaslein@outlook.com',
                 'password' => bcrypt('web2023'),
             ],
 

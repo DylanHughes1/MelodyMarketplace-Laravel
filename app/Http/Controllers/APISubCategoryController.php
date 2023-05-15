@@ -12,7 +12,7 @@ class APISubCategoryController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/subcategories",
+     *     path="/rest/subcategories",
      *     summary="Obtiene todas las subcategorias.",
      *     tags={"Subcategories"},
      *     @OA\Response(
@@ -80,7 +80,7 @@ class APISubCategoryController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/subcategories",
+     *     path="/rest/subcategories",
      *     summary="Crear una nueva subcategoría",
      *     tags={"Subcategories"},
      *     @OA\RequestBody(
@@ -190,7 +190,7 @@ class APISubCategoryController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/subcategories/{id}",
+     *     path="/rest/subcategories/{id}",
      *     summary="Actualiza una subcategoría existente.",
      *     tags={"Subcategories"},
      *     @OA\Parameter(
@@ -294,7 +294,7 @@ class APISubCategoryController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/subcategories/{id}",
+     *     path="/rest/subcategories/{id}",
      *     summary="Obtener una subcategoria por su ID",
      *     description="You get a subcategory specified by your ID.",
      *     tags={"Subcategories"},

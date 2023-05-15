@@ -5,13 +5,13 @@
         "version": "0.1"
     },
     "paths": {
-        "/api/categories": {
+        "/rest/categories": {
             "get": {
                 "tags": [
                     "Categories"
                 ],
                 "summary": "Obtiene todas las categorias.",
-                "operationId": "567bebc5b6d654df969726dfe16e0085",
+                "operationId": "9eaaab2616348a42a0a50cf5c1847146",
                 "responses": {
                     "200": {
                         "description": "All categories obtained.",
@@ -77,7 +77,7 @@
                     "Categories"
                 ],
                 "summary": "Crear una nueva categoría",
-                "operationId": "ab54f90b49689a1bf027f7cdffdeefe8",
+                "operationId": "cda39739b70fe24a43aa9a5d954baf7f",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -164,14 +164,14 @@
                 }
             }
         },
-        "/api/categories/{id}": {
+        "/rest/categories/{id}": {
             "get": {
                 "tags": [
                     "Categories"
                 ],
                 "summary": "Obtener una categoría por su ID",
                 "description": "You get a category specified by your ID.",
-                "operationId": "815e701e63f99f01b994c26091eaebb0",
+                "operationId": "1b0c10e10b3fc4613c5e762aae67ee24",
                 "parameters": [
                     {
                         "name": "id",
@@ -246,7 +246,7 @@
                     "Categories"
                 ],
                 "summary": "Actualiza una categoría existente.",
-                "operationId": "5b3b90d605546877e2ba855dcdeba1d3",
+                "operationId": "f7e601193addcfc8633d81e8229dea6a",
                 "parameters": [
                     {
                         "name": "id",
@@ -354,13 +354,13 @@
                 ]
             }
         },
-        "/api/products": {
+        "/rest/products": {
             "get": {
                 "tags": [
                     "Products"
                 ],
                 "summary": "Obtiene todos los productos con las categorías y subcategorías",
-                "operationId": "e151800c70794bcbacf2aed018578e35",
+                "operationId": "c3ecc4b4322b5e887809ae11ef44c8b3",
                 "responses": {
                     "200": {
                         "description": "Successful operation",
@@ -433,13 +433,13 @@
                 }
             }
         },
-        "/api/products/": {
+        "/rest/products/": {
             "get": {
                 "tags": [
                     "Products"
                 ],
                 "summary": "Obtiene todas las categorias y subcategorías",
-                "operationId": "2bb72e36f959034dcb3f0b29bdd9a0cc",
+                "operationId": "30c27f2648c511d54b712f2a52ad019c",
                 "responses": {
                     "200": {
                         "description": "Successful operation",
@@ -488,13 +488,13 @@
                 }
             }
         },
-        "/api/products/create": {
+        "/rest/products/create": {
             "post": {
                 "tags": [
                     "Products"
                 ],
                 "summary": "Crea y almacena un nuevo producto",
-                "operationId": "d73a288f4ecec42b94ddeca2e40d7a60",
+                "operationId": "6238b5b5bec28b3ea94ca1d857fa1937",
                 "requestBody": {
                     "description": "Product data",
                     "required": true,
@@ -557,13 +557,13 @@
                 }
             }
         },
-        "/api/products/{id}": {
+        "/rest/products/{id}": {
             "get": {
                 "tags": [
                     "Products"
                 ],
                 "summary": "Muestra un producto especifico a partir de un ID",
-                "operationId": "378f8becd97c8658204224901d0071a3",
+                "operationId": "6f8de5fd9c8c6443f2f7a36b6f2ff6b6",
                 "parameters": [
                     {
                         "name": "id",
@@ -620,7 +620,7 @@
                     "Products"
                 ],
                 "summary": "Actualiza el producto identificado por el ID",
-                "operationId": "98a4f7f568f4c9b828736d2ff008c664",
+                "operationId": "2fe491327293ead2addffd2e8ad72158",
                 "parameters": [
                     {
                         "name": "id",
@@ -709,13 +709,13 @@
                 }
             }
         },
-        "/api/products/{id}/disable": {
+        "/rest/products/{id}/disable": {
             "put": {
                 "tags": [
                     "Products"
                 ],
                 "summary": "Deshabilita el producto mediante el stock",
-                "operationId": "ea2115372a03c933bdc8ea46af93046e",
+                "operationId": "0790240aa76439b065b918e8f2d314b2",
                 "parameters": [
                     {
                         "name": "id",
@@ -760,13 +760,13 @@
                 }
             }
         },
-        "/api/subcategories": {
+        "/rest/subcategories": {
             "get": {
                 "tags": [
                     "Subcategories"
                 ],
                 "summary": "Obtiene todas las subcategorias.",
-                "operationId": "3ea348b9aaa850ce0b004c1ece394df5",
+                "operationId": "b16777f0e53e243e12be5d522f358cd1",
                 "responses": {
                     "200": {
                         "description": "All subcategories obtained.",
@@ -832,7 +832,7 @@
                     "Subcategories"
                 ],
                 "summary": "Crear una nueva subcategoría",
-                "operationId": "a6583b414eee5ebb81ab31f099773fb9",
+                "operationId": "42371d3f16c831fa87e71a8b104c7103",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -919,14 +919,14 @@
                 }
             }
         },
-        "/api/subcategories/{id}": {
+        "/rest/subcategories/{id}": {
             "get": {
                 "tags": [
                     "Subcategories"
                 ],
                 "summary": "Obtener una subcategoria por su ID",
                 "description": "You get a subcategory specified by your ID.",
-                "operationId": "695b064d48f37281bb90a581780f1e4b",
+                "operationId": "ded99b4c143c8a44351508a898cc67be",
                 "parameters": [
                     {
                         "name": "id",
@@ -1001,7 +1001,7 @@
                     "Subcategories"
                 ],
                 "summary": "Actualiza una subcategoría existente.",
-                "operationId": "265cb677741b822620dc592e9fd40707",
+                "operationId": "04a37f7f3196caa782c813a8818347f6",
                 "parameters": [
                     {
                         "name": "id",
