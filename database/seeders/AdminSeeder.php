@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
 
 class AdminSeeder extends Seeder
 {
@@ -17,8 +15,14 @@ class AdminSeeder extends Seeder
         $data = [
             [
                 'name' => 'Martin Hughes',
-                'email' => 'martin_hughes@outlook.com',
+                'email' => 'martinmaslein@outlook.com',
                 'password' => bcrypt('web2023'),
+            ],
+
+            [
+                'name' => 'Admin',
+                'email' => 'admin@iaw.com',
+                'password' => bcrypt('admin123'),
             ],
         ];
 

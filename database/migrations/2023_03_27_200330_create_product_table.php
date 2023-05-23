@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('product', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('image_link')->nullable();
+            $table->string('image_path')->nullable();
             $table->boolean('hasStock');
             $table->decimal('price', 10, 2);
 
