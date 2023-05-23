@@ -49,7 +49,7 @@ class APIProductController extends Controller
     public function index()
     {
 
-        $products = Product::orderBy('id', 'asc')->get();
+        $products = Product::orderBy('id', 'asc')->paginate(15);
         $categories = Category::all();
         $subcategories = Subcategory::all();
 
@@ -211,7 +211,7 @@ class APIProductController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/rest/products/{id}/disable",
+     *     path="/rest/products/{id}/editStock",
      *     summary="Deshabilita el producto mediante el stock",
      *     tags={"Products"},
      *     @OA\Parameter(
@@ -223,7 +223,7 @@ class APIProductController extends Controller
      *     ),
      *     @OA\Response(
      *         response=201,
-     *         description="Image edited successfully",
+     *         description="Stock edited successfully",
      *         @OA\JsonContent(
      *             @OA\Property(property="message", type="string")
      *         )
@@ -249,7 +249,7 @@ class APIProductController extends Controller
         $product->save();
 
         return response()->json([
-            'message' => 'Image edited successfully'
+            'message' => 'Stock edited successfully'
         ], 201);
     }
 

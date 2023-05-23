@@ -74,7 +74,7 @@ class APISubCategoryController extends Controller
     {
         $subcategories = Subcategory::select('id', 'name', 'image_link')
             ->orderBy('id', 'asc')
-            ->get();
+            ->paginte(10);
         return response()->json($subcategories);
     }
 
