@@ -3,86 +3,90 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Detail;
 use Illuminate\Http\Request;
 
-class PedidoController extends Controller
+class OrderController extends Controller
 {
 
     public function index()
     {
-        try {
-            $order = Order::with('details')->get();
+        $orders = Order::with('details')->paginate(10);
 
-            return response()->json(['order' => $order]);
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Ocurrió un error al obtener los pedidos'], 500);
-        }
+        return view('orders.index', ['orders' => $orders]);
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required|exists:users,id',
-            // Otros campos requeridos para crear un pedido
+            'details' => 'required|array',
+            'details.*.product_id' => 'required|exists:products,id',
+            'details.*.size' => 'required|integer|min:1'
         ]);
 
         $order = new Order();
-        $order->user_id = $request->input('user_id');
-        // Setear otros campos del pedido según corresponda
         $order->save();
 
-        return response()->json(['message' => 'Pedido creado exitosamente.', 'pedido' => $order], 201);
+        $details = [];
+
+        foreach ($request->detalles as $detalleData) {
+            $detail = new Detail();
+            $detail->pedido_id = $detail->id;
+            $detail->producto_id = $detalleData['product_id'];
+            $detail->cantidad = $detalleData['size'];
+            $detail->save();
+
+            $details[] = $detail;
+        }
+
+        return redirect("/orders");
     }
+
+
+    public function create()
+    {
+        $orders = Order::select('id')
+            ->orderBy('id', 'asc')
+            ->get();
+        return view('orders.create')->with('orders', $orders);
+    }
+
 
     public function update(Request $request, $id)
     {
-        try {
-            $order = Order::findOrFail($id);
-
-            $order->estado = $request->input('estado', $order->estado);
-            $order->total = $request->input('total', $order->total);
-
-            $order->save();
-
-            return response()->json(['message' => 'Pedido actualizado correctamente', 'pedido' => $order]);
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Ocurrió un error al actualizar el pedido'], 500);
-        }
     }
 
-    public function get(Request $request, $id)
+    public function get($id)
     {
-        $order = Order::with('detalles')->find($id);
+        $order = Order::find($id);
 
         if (!$order) {
-            return response()->json(['error' => 'Pedido no encontrado.'], 404);
+            return redirect()->route('order.index')->with('error', 'Pedido no encontrado.');
         }
 
-        return response()->json(['pedido' => $order]);
+        return view('order.show')->with('order', $order);
     }
+
 
     public function show($id)
     {
-        try {
-            $order = Order::findOrFail($id);
-            $detail = $order->detail;
+        $order = Order::find($id);
 
-            return response()->json(['order' => $order, 'detail' => $detail]);
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'El pedido especificado no existe'], 404);
-        }
+        if($order==null)
+            abort(404);
+
+        return view('orders.show')->with('order', $order);
     }
+
 
 
     public function destroy($id)
-    {
-        try {
-            $order = Order::findOrFail($id);
-            $order->delete();
+{
+    $order = Order::find($id);
 
-            return response()->json(['message' => 'Pedido eliminado correctamente']);
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Ocurrió un error al eliminar el pedido'], 500);
-        }
-    }
+    $order->delete();
+
+    return redirect()->route('orders.index')->with('success', 'Pedido eliminado correctamente.');
+}
+
 }
