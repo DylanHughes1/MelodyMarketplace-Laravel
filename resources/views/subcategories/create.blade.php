@@ -1,7 +1,6 @@
 @extends("layouts.app")
 @section('title', 'Subcategories')
 @section('content')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <body class="text-center">
     <div class="relative flex items-top justify-center min-h-screen sm:items-top py-4 sm:pt-0">
