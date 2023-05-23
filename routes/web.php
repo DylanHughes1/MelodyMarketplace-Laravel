@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::resource('products', 'App\Http\Controllers\ProductController')->middleware(['auth']);
-Route::put('/products/{id}/disable', [ProductController::class, 'editImage'])->middleware(['auth']);
+Route::put('/products/{id}/editStock', [ProductController::class, 'editStock'])->middleware(['auth']);
 Route::post('/products/create', [ProductController::class, 'store'])->middleware(['auth']);
 
 Route::resource('categories', 'App\Http\Controllers\CategoryController')->middleware(['auth']);

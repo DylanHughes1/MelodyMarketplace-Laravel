@@ -97,11 +97,16 @@ class ProductController extends Controller
 
     }
 
-    public function editImage(string $id)
+    public function editStock(string $id)
     {
         $product = Product::find($id);
-        if($product->hasStock)
+        
+        if ($product->hasStock){
             $product->hasStock = false;
+        } 
+        else if (!$product->hasStock){
+            $product->hasStock = true;
+        }
 
         $product->save();
 

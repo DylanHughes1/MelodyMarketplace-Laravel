@@ -2,6 +2,7 @@
 @section('title', 'Products')
 @section('content')
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -40,23 +41,37 @@
                             </table>
                         </div>
                     </div>
-                    <div class="flex items-center justify-center pb-4"> 
-                        <button type="button" data-modal-target="default-modal" data-modal-toggle="default-modal" href="#" class="text-white bg-blue-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 mr-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Editar</button> 
-                        
-                        <form method="POST" action="/products/{{$product->id}}/disable" enctype="multipart/form-data">
+                    <div class="flex items-center justify-center pb-4">
+                        @if ($product->hasStock)
+                            <!-- Botón "Deshabilitar" cuando hay stock -->
+                            <form method="POST" action="/products/{{$product->id}}/editStock" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                            <button type="submit" id="myButton" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Deshabilitar</button>
-                        </form>
-
-                        <script>                
+                                <button type="submit" id="myButton" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Deshabilitar</button>
+                            </form>
+                        @else
+                            <!-- Botón "Habilitar" cuando no hay stock -->
+                            <form method="POST" action="/products/{{$product->id}}/editStock" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" id="myButton" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-900">Habilitar</button>
+                            </form>
+                        @endif
+                    
+                        <button type="button" data-modal-target="default-modal" data-modal-toggle="default-modal" href="#" class="text-white bg-blue-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 mr-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Editar</button>
+                    
+                        <script>
                             var product = {!! json_encode($product) !!};
-                            if(!product.hasStock){
-                                var image = document.getElementById("image");
-                                image.classList.add("grayscale");     
+                            var image = document.getElementById("image");
+                        
+                            if (!product.hasStock) {
+                                image.classList.add("grayscale");
+                            } 
+                            else if (product.hasStock){
+                                console.log("asd");
+                                image.classList.remove("grayscale");
                             }
                         </script>
-
                     </div>
                 </div>
             </div>
