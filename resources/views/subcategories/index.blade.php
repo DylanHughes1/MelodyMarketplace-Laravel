@@ -49,6 +49,7 @@
                             </td>
                         </tr>
                         @endforeach
+                        {{ $subcategories->links() }}
                     </tbody>
                 </table>
             </div>
