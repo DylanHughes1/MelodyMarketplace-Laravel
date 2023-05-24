@@ -29,3 +29,9 @@ Route::post('/categories/create', [APICategoryController::class, 'store']);
 
 Route::apiResource('subcategories', APISubCategoryController::class);
 Route::post('/subcategories/create', [APISubCategoryController::class, 'store']);
+
+Route::apiResource('orders', APIOrderController::class);
+Route::post('/orders/create', [APIOrderController::class, 'store']);
+
+Route::apiResource('details', APIDetailsController::class);
+Route::post('/details/create', [APIDetailsController::class, 'store']);
