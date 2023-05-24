@@ -9,37 +9,38 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
 
-                <div class="flex items-center justify-center pb-4">
-                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-
-                        <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
+            <div class="flex items-center justify-center pb-4">
+                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <div class="container mx-auto">
+                        <table class="table-auto w-2/3">
+                            <thead>
+                                <tr>
+                                    <th class="px-4 py-2 text-center bg-gray-200">Datos</th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        ID: {{$order->id}}
-                                    </td>
+                                    <td class="px-4 py-2 text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">ID: {{$order->id}}</td>
                                 </tr>
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Direccion: {{$order->delivery_address}}
-                                    </td>
+                                    <td class="px-4 py-2 text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">Direccion: {{$order->delivery_address}}</td>
                                 </tr>
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Detalles:
-                                    </td>
+                                    <td class="px-4 py-2 text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">Detalles:</td>
                                 </tr>
+
                                 @foreach($order->details as $detail)
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        <img class="rounded-t-lg" id="image" src="{{$detail->product->image_link}}" alt="imagen del producto{{$detail->product->name}}">
-                                        Producto: {{$detail->product->name}}
-                                    </td>
-                                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Cantidad: {{$detail->quantity}}
+                                <tr >
+                                    <td class="px-6 py-4 bg-white font-medium text-gray-900 border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <div class="text-center">
+                                            <img class="rounded-t-lg" id="image" src="{{$detail->product->image_link}}" alt="imagen del producto{{$detail->product->name}}">
+                                            <p class="mt-2">{{$detail->product->name}}</p>
+                                            <p class="mt-2 font-bold">Cantidad: {{$detail->quantity}}</p>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach
+
                             </tbody>
                         </table>
                     </div>
@@ -47,6 +48,7 @@
             </div>
         </div>
     </div>
+</div>
 
     
     <div id="default-modal" aria-hidden="true" class="hidden overflow-x-hidden overflow-y-auto fixed h-modal md:h-full top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center">

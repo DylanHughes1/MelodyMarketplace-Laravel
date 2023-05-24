@@ -18,6 +18,9 @@
                                 <th scope="col" class="px-6 py-3">
                                     Direccion
                                 </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Direccion
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
