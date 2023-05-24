@@ -12,7 +12,7 @@
             <div class="flex items-center justify-center pb-4">
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <div class="container mx-auto">
-                        <table class="table-auto w-2/3">
+                        <table>
                             <thead>
                                 <tr>
                                     <th class="px-4 py-2 text-center bg-gray-200">Datos</th>
