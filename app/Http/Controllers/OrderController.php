@@ -81,12 +81,13 @@ class OrderController extends Controller
 
 
     public function destroy($id)
-{
-    $order = Order::find($id);
+    {
 
-    $order->delete();
+        $order = Order::find($id);
 
-    return redirect()->route('orders.index')->with('success', 'Pedido eliminado correctamente.');
-}
+        $order->delete();
+
+        return redirect()->route('orders.index')->with('success', 'Pedido eliminado correctamente.');
+    }
 
 }

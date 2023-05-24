@@ -68,7 +68,6 @@
                                 image.classList.add("grayscale");
                             } 
                             else if (product.hasStock){
-                                console.log("asd");
                                 image.classList.remove("grayscale");
                             }
                         </script>

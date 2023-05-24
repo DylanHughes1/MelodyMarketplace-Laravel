@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('delivery_address');
             $table->timestamps();
+
+            $table->softDeletes();
         });
     }
 
