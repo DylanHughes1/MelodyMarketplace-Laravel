@@ -13,15 +13,9 @@ class APIDetailController extends Controller
     public function index()
     {
         $details = Detail::all();
-        $products = Product::orderBy('id', 'asc')->paginate(15);
-        $categories = Category::all();
-        $subcategories = Subcategory::all();
 
         return response()->json([
             'details' => $details,
-            'products' => $products,
-            'categories' => $categories,
-            'subcategories' => $subcategories
         ]);
     }
 
