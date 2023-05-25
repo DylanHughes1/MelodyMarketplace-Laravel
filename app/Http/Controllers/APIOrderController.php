@@ -10,7 +10,7 @@ class APIOrderController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/orders",
+     *     path="/rest/orders",
      *     summary="Obtiene todos los pedidos",
      *     tags={"Orders"},
      *     @OA\Response(
@@ -33,7 +33,7 @@ class APIOrderController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/orders",
+     *     path="/rest/orders",
      *     summary="Crea y almacena un nuevo pedido",
      *     tags={"Orders"},
      *     @OA\RequestBody(
@@ -79,7 +79,7 @@ class APIOrderController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/orders/{id}",
+     *     path="/rest/orders/{id}",
      *     summary="Obtiene un pedido específico a partir de su ID",
      *     tags={"Orders"},
      *     @OA\Parameter(
@@ -118,7 +118,7 @@ class APIOrderController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/orders/{id}",
+     *     path="/rest/orders/{id}",
      *     summary="Actualiza el pedido identificado por ID",
      *     tags={"Orders"},
      *     @OA\Parameter(
@@ -186,7 +186,7 @@ class APIOrderController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/api/orders/{id}",
+     *     path="/rest/orders/{id}",
      *     summary="Elimina el pedido a partir de su ID",
      *     tags={"Orders"},
      *     @OA\Parameter(
