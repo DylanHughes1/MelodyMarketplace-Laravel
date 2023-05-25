@@ -1,7 +1,7 @@
 <nav>
     <!-- component -->
     <div class="flex flex-wrap bg-purple-100 w-full h-screen rounded shadow transition duration-300">
-        <div class="w-3/12 bg-red rounded p-3 shadow-lg">
+        <div class="bg-red rounded p-3 shadow-lg">
             <div class="flex items-center space-x-4 p-2 mb-5">
                 <img class="h-12 rounded-full" src="https://w1.pngwing.com/pngs/951/513/png-transparent-sky-logo-system-administrator-user-management-computer-software-flat-design-blue.png" alt="James Bhatta">
                 <div>

@@ -45,7 +45,7 @@
 <body class="font-sans antialiased">
     
     <div class="flex flex-row" class="min-h-screen bg-gray-100">
-        <nav class="w-1/4">
+        <nav class="w-1/5">
             @include('layouts.navigation')
         </nav>
         <div class="w-3/4">
