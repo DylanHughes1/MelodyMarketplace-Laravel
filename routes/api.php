@@ -4,6 +4,9 @@ use App\Http\Controllers\APISubCategoryController;
 use App\Http\Controllers\APICategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\APIProductController;
+use App\Http\Controllers\APIOrderController;
+use App\Http\Controllers\APIDetailsController;
+
 
 /*
 |--------------------------------------------------------------------------

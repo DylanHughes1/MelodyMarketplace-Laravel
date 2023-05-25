@@ -17,9 +17,32 @@ class APIOrderController extends Controller
      *         response=200,
      *         description="Successful operation",
      *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(
+     *                 type="object",
+     *                 @OA\Property(
+     *                     property="id",
+     *                     type="integer",
+     *                     description="Order ID."
+     *                 ),
+     *                 @OA\Property(
+     *                     property="delivery_address",
+     *                     type="string",
+     *                     description="Customer delivery address."
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="Orders not found.",
+     *         @OA\JsonContent(
      *             type="object",
-     *             @OA\Property(property="id", type="integer", example="1"),
-     *             @OA\Property(property="delivery_address", type="array", example="Av. Alem 1100")
+     *             @OA\Property(
+     *                 property="error",
+     *                 type="string",
+     *                 description="Error message."
+     *             )
      *         )
      *     )
      * )
