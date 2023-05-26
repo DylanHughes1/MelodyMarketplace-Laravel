@@ -3,13 +3,41 @@
 namespace App\Http\Controllers;
 
 use App\Models\Detail;
-use App\Models\Product;
-use App\Models\Category;
-use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
 class APIDetailController extends Controller
 {
+
+    /**
+     * @OA\Get(
+     *     path="/rest/details",
+     *     summary="Obtiene todos los detalles",
+     *     tags={"Details"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="id", type="integer",description="Detail ID"),
+     *             @OA\Property(property="quantity", type="integer", description="Quantity"),
+     *             @OA\Property(property="product_id", type="integer", description="Product ID"),
+     *             @OA\Property(property="order_id", type="integer", description="Order ID")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="Details not found.",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="error",
+     *                 type="string",
+     *                 description="Error message."
+     *             )
+     *         )
+     *     )    
+     * )
+     */
     public function index()
     {
         $details = Detail::all();
@@ -36,6 +64,40 @@ class APIDetailController extends Controller
         return response()->json(['message' => 'Detail created successfully.', 'detail' => $detail], 201);
     }
 
+    /**
+     * @OA\Post(
+     *     path="/rest/details",
+     *     summary="Crea y almacena un nuevo detalle",
+     *     tags={"Details"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\MediaType(
+     *             mediaType="application/x-www-form-urlencoded",
+     *             @OA\Schema(
+     *                 @OA\Property(property="detail_id", type="integer"),
+     *                 @OA\Property(property="product_id", type="integer"),
+     *                 @OA\Property(property="quantity", type="integer"),
+     *                 @OA\Property(property="order_id", type="integer")
+     * 
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Order created successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string"),
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Validation error",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     )
+     * )
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -53,6 +115,38 @@ class APIDetailController extends Controller
         return response()->json(['message' => 'Detalle creado exitosamente.', 'detail' => $detail], 201);
     }
 
+    /**
+     * @OA\Get(
+     *     path="/rest/details/{id}",
+     *     summary="Obtiene un detalle específico a partir de su ID",
+     *     tags={"Details"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="Detail ID",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="detail", type="object")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Detail not found",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="error", type="string")
+     *         )
+     *     )
+     * )
+     */
     public function show($id)
     {
         $detail = Detail::findOrFail($id);
@@ -60,6 +154,57 @@ class APIDetailController extends Controller
         return response()->json(['detail' => $detail]);
     }
 
+    /**
+     * @OA\Put(
+     *     path="/rest/details/{id}",
+     *     summary="Actualiza el detalle identificado por ID",
+     *     tags={"Details"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID of the detail",
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64",
+     *         )
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\MediaType(
+     *             mediaType="application/x-www-form-urlencoded",
+     *             @OA\Schema(
+     *                 @OA\Property(property="detail_id", type="integer"),
+     *                 @OA\Property(property="product_id", type="integer"),
+     *                 @OA\Property(property="quantity", type="integer"),
+     *                 @OA\Property(property="order_id", type="integer")
+     * 
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Detail updated successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string"),
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Validation error",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Detail not found",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="error", type="string")
+     *         )
+     *     )
+     * )
+     */
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -75,6 +220,37 @@ class APIDetailController extends Controller
         return response()->json(['message' => 'Detalle actualizado exitosamente.', 'detail' => $detail]);
     }
 
+    /**
+     * @OA\Delete(
+     *     path="/rest/details/{id}",
+     *     summary="Elimina el detalle a partir de su ID",
+     *     tags={"Details"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ID of the detail",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Detail deleted successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Detail not found",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="error", type="string")
+     *         )
+     *     )
+     * )
+     */
     public function destroy($id)
     {
         $detail = Detail::findOrFail($id);

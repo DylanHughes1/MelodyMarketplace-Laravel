@@ -33,13 +33,6 @@
                 </div>
                 <div class="flex items-center justify-center pb-4">
                     <button type="button" data-modal-target="default-modal" data-modal-toggle="default-modal" href="#" class="text-white bg-blue-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 mr-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Editar</button>
-
-                    <form method="POST" action="/subcategories/{{$subcategories->id}}/disable" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-                        <button type="submit" id="myButton" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Deshabilitar</button>
-                    </form>
-
                 </div>
             </div>
         </div>

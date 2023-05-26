@@ -5,7 +5,7 @@ use App\Http\Controllers\APICategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\APIProductController;
 use App\Http\Controllers\APIOrderController;
-use App\Http\Controllers\APIDetailsController;
+use App\Http\Controllers\APIDetailController;
 
 
 /*
@@ -36,5 +36,5 @@ Route::post('/subcategories/create', [APISubCategoryController::class, 'store'])
 Route::apiResource('orders', APIOrderController::class);
 Route::post('/orders/create', [APIOrderController::class, 'store']);
 
-Route::apiResource('details', APIDetailsController::class);
-Route::post('/details/create', [APIDetailsController::class, 'store']);
+Route::apiResource('details', APIDetailController::class);
+Route::post('/details/create', [APIDetailController::class, 'store']);

@@ -8,7 +8,7 @@ use App\Models\Detail;
 use App\Models\Product;
 use App\Models\Order;
 
-class DetailControler extends Controller
+class DetailController extends Controller
 {
     /**
      * Display a listing of the resource.
