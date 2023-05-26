@@ -72,21 +72,25 @@ class APIDetailController extends Controller
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\MediaType(
-     *             mediaType="application/x-www-form-urlencoded",
+     *             mediaType="multipart/form-data",
      *             @OA\Schema(
-     *                 @OA\Property(property="detail_id", type="integer"),
-     *                 @OA\Property(property="product_id", type="integer"),
-     *                 @OA\Property(property="quantity", type="integer"),
-     *                 @OA\Property(property="order_id", type="integer")
+     *                 @OA\Property(property="product_id", description="product id",type="integer"),
+     *                 @OA\Property(property="quantity", description="quantity",type="integer"),
+     *                 @OA\Property(property="order_id",description="order id", type="integer")
      * 
      *             )
      *         )
      *     ),
      *     @OA\Response(
      *         response=201,
-     *         description="Order created successfully",
+     *         description="Detail created correctly",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string"),
+     *             type="object",
+     *             @OA\Property(
+     *                 property="message",
+     *                 type="string",
+     *                 example="El detalle se creó con éxito."
+     *             )
      *         )
      *     ),
      *     @OA\Response(
@@ -101,14 +105,14 @@ class APIDetailController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'product_id' => 'required|exists:products,id',
-            'pedido_id' => 'required|exists:pedidos,id',
+            'product_id' => 'required|exists:product,id',
+            'order_id' => 'required|exists:order,id',
             'quantity' => 'required|integer|min:1',
         ]);
 
         $detail = new Detail();
         $detail->product_id = $request->input('product_id');
-        $detail->pedido_id = $request->input('pedido_id');
+        $detail->order_id = $request->input('order_id');
         $detail->quantity = $request->input('quantity');
         $detail->save();
 
@@ -161,9 +165,9 @@ class APIDetailController extends Controller
      *     tags={"Details"},
      *     @OA\Parameter(
      *         name="id",
-     *         in="path",
-     *         required=true,
      *         description="ID of the detail",
+     *         required=true,
+     *         in="path",      
      *         @OA\Schema(
      *             type="integer",
      *             format="int64",
@@ -171,15 +175,11 @@ class APIDetailController extends Controller
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\MediaType(
-     *             mediaType="application/x-www-form-urlencoded",
-     *             @OA\Schema(
-     *                 @OA\Property(property="detail_id", type="integer"),
-     *                 @OA\Property(property="product_id", type="integer"),
-     *                 @OA\Property(property="quantity", type="integer"),
-     *                 @OA\Property(property="order_id", type="integer")
-     * 
-     *             )
+     *         @OA\JsonContent(
+     *             required={"name"},
+     *             @OA\Property(property="product_id", description="ID del producto", type="integer"),
+     *             @OA\Property(property="quantity", description="Cantidad", type="integer", minimum=1),
+     *             @OA\Property(property="order_id", description="ID del pedido", type="integer")
      *         )
      *     ),
      *     @OA\Response(
@@ -208,13 +208,15 @@ class APIDetailController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'product_id' => 'required|exists:products,id',
+            'product_id' => 'required|exists:product,id',
             'quantity' => 'required|integer|min:1',
+            'order_id' => 'required|exists:order,id',
         ]);
 
         $detail = Detail::findOrFail($id);
         $detail->product_id = $request->input('product_id');
         $detail->quantity = $request->input('quantity');
+        $detail->order_id = $request->input('order_id');
         $detail->save();
 
         return response()->json(['message' => 'Detalle actualizado exitosamente.', 'detail' => $detail]);

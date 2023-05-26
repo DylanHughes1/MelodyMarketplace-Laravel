@@ -417,19 +417,19 @@
                 "requestBody": {
                     "required": true,
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "multipart/form-data": {
                             "schema": {
                                 "properties": {
-                                    "detail_id": {
-                                        "type": "integer"
-                                    },
                                     "product_id": {
+                                        "description": "product id",
                                         "type": "integer"
                                     },
                                     "quantity": {
+                                        "description": "quantity",
                                         "type": "integer"
                                     },
                                     "order_id": {
+                                        "description": "order id",
                                         "type": "integer"
                                     }
                                 },
@@ -440,13 +440,14 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Order created successfully",
+                        "description": "Detail created correctly",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
                                         "message": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "example": "El detalle se creó con éxito."
                                         }
                                     },
                                     "type": "object"
@@ -545,19 +546,23 @@
                 "requestBody": {
                     "required": true,
                     "content": {
-                        "application/x-www-form-urlencoded": {
+                        "application/json": {
                             "schema": {
+                                "required": [
+                                    "name"
+                                ],
                                 "properties": {
-                                    "detail_id": {
-                                        "type": "integer"
-                                    },
                                     "product_id": {
+                                        "description": "ID del producto",
                                         "type": "integer"
                                     },
                                     "quantity": {
-                                        "type": "integer"
+                                        "description": "Cantidad",
+                                        "type": "integer",
+                                        "minimum": 1
                                     },
                                     "order_id": {
+                                        "description": "ID del pedido",
                                         "type": "integer"
                                     }
                                 },
