@@ -62,8 +62,9 @@ class DetailController extends Controller
      */
     public function show($id)
     {
+        
         $detail = Detail::find($id);
-        $product = Product::find($detail->product_id);
+        $product = Product::orderBy('id', 'asc')->find($detail->product_id);
 
         return view('details.show', compact('detail', 'product'));
 
@@ -74,7 +75,7 @@ class DetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-           
+        
 
         $request->validate([
             'quantity' => 'required|integer|min:1',

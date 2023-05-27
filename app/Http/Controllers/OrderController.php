@@ -71,7 +71,7 @@ class OrderController extends Controller
 
     public function show($id)
     {
-        $order = Order::find($id);
+        $order = Order::orderBy('id', 'asc')->find($id);
 
         if($order==null)
             abort(404);
