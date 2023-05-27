@@ -854,10 +854,8 @@
                         "application/x-www-form-urlencoded": {
                             "schema": {
                                 "properties": {
-                                    "user_id": {
-                                        "type": "integer"
-                                    },
                                     "delivery_address": {
+                                        "description": "Direccion de envío",
                                         "type": "string"
                                     }
                                 },

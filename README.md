@@ -32,7 +32,9 @@ Además, el cliente podrá ver los últimos descuentos, y suscribirse para recib
 
 # Swagger
 
-Link de Swagger: https://app.swaggerhub.com/apis/DylanHughes1/Laravel_API/0.1
+Link de Swagger: https://hughes-maslein-laravel-git-larave-ba45c8-hughes-maslein-laravel.vercel.app/rest/documentation
+
+Link alternativo: https://app.swaggerhub.com/apis/DylanHughes1/Laravel_API/0.1
 
 ## Pasos
 

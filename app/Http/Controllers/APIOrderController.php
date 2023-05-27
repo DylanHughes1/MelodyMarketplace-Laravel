@@ -159,9 +159,8 @@ class APIOrderController extends Controller
      *         @OA\MediaType(
      *             mediaType="application/x-www-form-urlencoded",
      *             @OA\Schema(
-     *                 @OA\Property(property="user_id", type="integer"),
-     *                 @OA\Property(property="delivery_address", type="string")
-     *             )
+     *             @OA\Property(property="delivery_address", description="Direccion de envío", type="string")
+     *              )
      *         )
      *     ),
      *     @OA\Response(
@@ -190,15 +189,11 @@ class APIOrderController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'user_id' => 'exists:users,id',
-            'delivery_address' => '',
+            'delivery_address' => 'string',
         ]);
 
         $order = Order::findOrFail($id);
 
-        if ($request->has('user_id')) {
-            $order->user_id = $request->input('user_id');
-        }
         if ($request->has('delivery_address')) {
             $order->delivery_address = $request->input('delivery_address');
         }
