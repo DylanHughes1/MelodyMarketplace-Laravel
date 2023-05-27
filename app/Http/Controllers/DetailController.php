@@ -41,7 +41,21 @@ class DetailController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'quantity' => 'required|integer|min:1',
+            'order_id' => 'required|exists:orders,id'
+        ]);
+
+        $detail = new Detail();
+        $detail->product_id = $request->product_id;
+        $detail->quantity = $request->quantity;
+        $detail->order_id = $request->order_id;
+        $detail->save();
+
+        return redirect("/orders")->with('success', 'Detail created successfully.');
     }
+
 
     /**
      * Display the specified resource.
@@ -51,15 +65,8 @@ class DetailController extends Controller
         $detail = Detail::find($id);
         $product = Product::find($detail->product_id);
 
-        return view('details.show');
-    }
+        return view('details.show', compact('detail', 'product'));
 
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
-    {
     }
 
     /**
@@ -67,7 +74,20 @@ class DetailController extends Controller
      */
     public function update(Request $request, $id)
     {
+           
+
+        $request->validate([
+            'quantity' => 'required|integer|min:1',
+        ]); 
+
+        $detail = Detail::find($id);
+
+        $detail->quantity = $request->quantity;
+        $detail->save();
+
+        return redirect("/orders/".$detail->order_id)->with('success', 'Detail updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.

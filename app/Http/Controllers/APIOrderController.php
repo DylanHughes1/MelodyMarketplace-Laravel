@@ -235,7 +235,7 @@ class APIOrderController extends Controller
      */
     public function destroy($id)
     {
-        $order = Order::findOrFail($id);
+        $order = Order::find($id);
         $order->delete();
 
         return response()->json(['message' => 'Orden eliminada exitosamente.']);

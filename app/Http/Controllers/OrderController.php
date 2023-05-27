@@ -12,6 +12,7 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::with('details')->paginate(10);
+        
 
         return view('orders.index', ['orders' => $orders]);
     }
