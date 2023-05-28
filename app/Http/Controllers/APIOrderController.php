@@ -64,7 +64,6 @@ class APIOrderController extends Controller
      *         @OA\MediaType(
      *             mediaType="application/x-www-form-urlencoded",
      *             @OA\Schema(
-     *                 @OA\Property(property="user_id", type="integer"),
      *                 @OA\Property(property="delivery_address", type="string")
      *             )
      *         )
@@ -88,12 +87,10 @@ class APIOrderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required|exists:users,id',
             'delivery_address' => 'required',
         ]);
 
         $order = new Order();
-        $order->user_id = $request->input('user_id');
         $order->delivery_address = $request->input('delivery_address');
         $order->save();
 
