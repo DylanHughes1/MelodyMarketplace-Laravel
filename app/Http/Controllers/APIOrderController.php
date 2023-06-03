@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Client;
+use App\Models\Detail;
 
 class APIOrderController extends Controller
 {
@@ -88,11 +90,37 @@ class APIOrderController extends Controller
     {
         $request->validate([
             'delivery_address' => 'required',
+            'email' => 'required',
+            'name' => 'required',
+            'details' => 'required',
         ]);
 
-        $order = new Order();
-        $order->delivery_address = $request->input('delivery_address');
+        $client = Client::where('email', $request->input('email'))->get();
+        if(!$client->isEmpty()){
+            $order = new Order();
+            $order->delivery_address = $request->input('delivery_address');
+            $order->client_id = $client->first()->id();
+        }else{
+            $newClient = new Client();
+            $newClient->name = $request->input('name');
+            $newClient->email = $request->input('email');
+            $newClient->save();
+
+            $order = new Order();
+            $order->delivery_address = $request->input('delivery_address');
+            $order->client_id = $newClient->id;
+        }
+
         $order->save();
+
+        $details = $request->input('details');        
+        foreach ((array) $details as $detail){
+            $newDetail = new Detail();
+            $newDetail->quantity = $detail->quantity;
+            $newDetail->product_id = $detail->product_id;
+            $newDetail->order_id = $order->id;
+            $newDetail->save();
+        }
 
         return response()->json(['message' => 'Orden creada exitosamente.', 'order' => $order], 201);
     }
