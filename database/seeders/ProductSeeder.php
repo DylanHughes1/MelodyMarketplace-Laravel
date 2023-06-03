@@ -275,7 +275,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Rogue RGD0520 5-Piece Complete Drum Set',
                 'price' => '92210',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/RGD0520-5-Piece-Complete-Drum-Set-Black/L85181000001000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L71942000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 10,
@@ -284,7 +284,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Yamaha Stage Custom Birch 5-Piece Shell Pack With 22" Bass Drum',
                 'price' => '171010',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/Stage-Custom-Birch-5-Piece-Shell-Pack-With-22-Bass-Drum-Honey-Amber/J07117000004000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/J07117000006000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 10,
@@ -293,7 +293,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Rogue Junior Kicker 5-Piece Drum Set',
                 'price' => '68400',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/Junior-Kicker-5-Piece-Drum-Set-Metallic-Blue/L77816000004000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L77816000004000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 10,
@@ -303,7 +303,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Alesis Nitro Mesh Special-Edition 8-Piece Electronic Drum Set',
                 'price' => '102380',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/Nitro-Mesh-Special-Edition-8-Piece-Electronic-Drum-Set/L71942000000000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L71942000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 11,
@@ -312,7 +312,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Simmons SD1250 Electronic Drum Kit With Mesh Pads',
                 'price' => '250600',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/SD1250-Electronic-Drum-Kit-With-Mesh-Pads/L83812000000000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L83812000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 11,
@@ -321,7 +321,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Simmons SD600 Electronic Drum Set With Mesh Heads and Bluetooth',
                 'price' => '91200',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/SD600-Electronic-Drum-Set-With-Mesh-Heads-and-Bluetooth/L28143000000000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L28143000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 11,
@@ -331,7 +331,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'ROC-N-SOC Nitro Throne',
                 'price' => '51300',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/Nitro-Throne-Gray/442612000002000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/442612000001000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 12,
@@ -340,7 +340,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'DW 9000 Series Double Bass Drum Pedal',
                 'price' => '205222',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/9000-Series-Double-Bass-Drum-Pedal/H89143000000000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/H89143000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 12,
@@ -349,7 +349,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Proline Snare Utility Rack',
                 'price' => '22800',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/Snare-Utility-Rack-Black/J06810000001000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/J06810000001000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 12,
@@ -359,7 +359,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Casio CDP-S360 Digital Piano With X-Stand and Bench',
                 'price' => '155056',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/CDP-S360-Digital-Piano-With-X-Stand-and-Bench-Black-Essentials/L95307000001001-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L95307000001001-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 13,
@@ -368,7 +368,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Casio PX-S1100 Privia Digital Piano With CS-68 Stand and SP-34 Pedal',
                 'price' => '222780',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/PX-S1100-Privia-Digital-Piano-With-CS-68-Stand-and-SP-34-Pedal-Red/L88783000003000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L88783000003000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 13,
@@ -377,7 +377,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Roland FP-30X Digital Piano With Matching Stand and DP-10 Damper Pedal',
                 'price' => '217750',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/FP-30X-Digital-Piano-With-Matching-Stand-and-DP-10-Damper-Pedal-Black/L85088000002000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L85088000002000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 13,
@@ -387,7 +387,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Hammond XK-5 ProStyle Lower Manual',
                 'price' => '501650',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/XK-5-ProStyle-Lower-Manual/J44132000000000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/J44132000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 14,
@@ -396,7 +396,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Hammond XK-1c Portable Organ',
                 'price' => '393340',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/XK-1c-Portable-Organ/H99720000000000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/H99720000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 14,
@@ -405,7 +405,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Used Roland Vk8 Organ',
                 'price' => '159610',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/Vk8-Organ/000000118858345-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/J42347000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 14,
@@ -415,7 +415,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Native Instruments KOMPLETE KONTROL S88 MK2 MIDI Controller',
                 'price' => '204990',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/KOMPLETE-KONTROL-S88-MK2-MIDI-Controller/L35589000000000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L35589000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 15,
@@ -424,7 +424,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Akai Professional MPC Studio Music Production Controller',
                 'price' => '45370',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/MPC-Studio-Music-Production-Controller/L87785000000000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L87785000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 15,
@@ -433,7 +433,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Akai Professional Force Music Production System',
                 'price' => '296207',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/Force-Music-Production-System/L47631000000000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L47631000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 15,
@@ -443,7 +443,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Sterling Audio MX3 3" Powered Studio Monitor',
                 'price' => '27360',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/MX3-3-Powered-Studio-Monitor-Pair/L19694000000000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L19694000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 16,
@@ -452,7 +452,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Mackie CR3-XBTLTD-WHT-DRVR 3" Multimedia Monitors All-White With Black',
                 'price' => '45330',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/CR3-XBTLTD-WHT-DRVR-3-Multimedia-Monitors-With-Bluetooth-in-Limited-Edition-All-White-With-Black-Trim-White/L86953000001000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L86953000001000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 16,
@@ -461,7 +461,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Mackie CR3-XBT 3" Active 50W Bluetooth Multimedia Studio Monitors, Pair',
                 'price' => '38600',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/CR3-XBT-3-Active-50W-Bluetooth-Multimedia-Studio-Monitors-Pair/L73334000000000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L73334000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 16,
@@ -471,7 +471,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Universal Audio Apollo Twin X QUAD Heritage Edition Thunderbolt 3',
                 'price' => '341810',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/Apollo-Twin-X-QUAD-Heritage-Edition-Thunderbolt-3-Audio-Interface/L81213000000000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L81213000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 17,
@@ -480,7 +480,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'M-Audio AIR 192|4 USB-C Audio Interface',
                 'price' => '27135',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/AIR-1924-USB-C-Audio-Interface/L69987000000000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L69987000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 17,
@@ -489,7 +489,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'RANE TWELVE MKII Motorized Battle-Ready DJ MIDI Controller',
                 'price' => '204996',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L77468000000000-00-720x720.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L77468000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 17,
@@ -499,7 +499,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'RODE NT1-A Large-Diaphragm Condenser Microphone With SM6 Shockmount',
                 'price' => '56770',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/NT1-A-Large-Diaphragm-Condenser-Microphone-With-SM6-Shockmount-and-Pop-Filter-XLR-Cable-and-Dust-Cover/476502000000000-00-180x180.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/476502000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 18,
@@ -508,7 +508,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Universal Audio Sphere DLX Modeling Microphone',
                 'price' => '294150',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/Sphere-DLX-Modeling-Microphone/L98186000000000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/L98186000000000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 18,
@@ -517,7 +517,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Neumann TLM 103 Condenser Microphone',
                 'price' => '272492',
-                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/TLM-103-Condenser-Microphone-Nickel/J52341000002000-00-220x220.jpg',
+                'image_link' => 'https://media.guitarcenter.com/is/image/MMGS7/J52341000001000-00-600x600.jpg',
                 'image_path' => '',
                 'description' => '',
                 'subcategory_id' => 18,
