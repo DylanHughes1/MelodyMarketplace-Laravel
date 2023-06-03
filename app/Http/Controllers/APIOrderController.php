@@ -59,23 +59,36 @@ class APIOrderController extends Controller
     /**
      * @OA\Post(
      *     path="/rest/orders",
-     *     summary="Crea y almacena un nuevo pedido",
+     *     summary="Create and store a new order",
      *     tags={"Orders"},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\MediaType(
-     *             mediaType="application/x-www-form-urlencoded",
+     *             mediaType="application/json",
      *             @OA\Schema(
-     *                 @OA\Property(property="delivery_address", type="string")
-     *             )
-     *         )
+     *                 required={"delivery_address", "email", "name", "details"},
+     *                 @OA\Property(property="delivery_address", type="string"),
+     *                 @OA\Property(property="email", type="string"),
+     *                 @OA\Property(property="name", type="string"),
+     *                 @OA\Property(property="details", type="array",
+     *                     @OA\Items(
+     *                         @OA\Property(property="quantity", type="integer"),
+     *                         @OA\Property(property="product_id", type="integer"),
+     *                     )
+     *                 ),
+     *             ),
+     *         ),
      *     ),
      *     @OA\Response(
      *         response=201,
      *         description="Order created successfully",
      *         @OA\JsonContent(
      *             @OA\Property(property="message", type="string"),
-     *         )
+     *             @OA\Property(property="order", type="object",
+     *                 @OA\Property(property="delivery_address", type="string"),
+     *                 @OA\Property(property="client_id", type="integer"),              
+     *             ),
+     *         ),
      *     ),
      *     @OA\Response(
      *         response=400,
@@ -85,6 +98,9 @@ class APIOrderController extends Controller
      *         )
      *     )
      * )
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
@@ -96,11 +112,11 @@ class APIOrderController extends Controller
         ]);
 
         $client = Client::where('email', $request->input('email'))->get();
-        if(!$client->isEmpty()){
+        if (!$client->isEmpty()) {
             $order = new Order();
             $order->delivery_address = $request->input('delivery_address');
             $order->client_id = $client->first()->id();
-        }else{
+        } else {
             $newClient = new Client();
             $newClient->name = $request->input('name');
             $newClient->email = $request->input('email');
@@ -113,11 +129,11 @@ class APIOrderController extends Controller
 
         $order->save();
 
-        $details = $request->input('details');        
-        foreach ((array) $details as $detail){
+        $details = $request->input('details');
+        foreach ((array) $details as $detail) {
             $newDetail = new Detail();
-            $newDetail->quantity = $detail->quantity;
-            $newDetail->product_id = $detail->product_id;
+            $newDetail->quantity = $detail['quantity'];
+            $newDetail->product_id = $detail['product_id'];
             $newDetail->order_id = $order->id;
             $newDetail->save();
         }
