@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('image_link')->nullable();
             $table->string('image_path')->nullable();
             $table->boolean('hasStock')->nullable();
+            $table->longText('description')->nullable();
             $table->decimal('price', 10, 2);
 
             $table->unsignedBigInteger('subcategory_id')->nullable();
