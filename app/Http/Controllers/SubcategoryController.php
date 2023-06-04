@@ -14,7 +14,7 @@ class SubcategoryController extends Controller
     {
         $subcategories = Subcategory::select('id', 'name', 'image_link')
                 ->orderBy('id', 'asc')
-                ->get();
+                ->paginate(10);
         return view('subcategories.index')->with('subcategories', $subcategories);
     }
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\DetailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,9 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
 Route::resource('products', 'App\Http\Controllers\ProductController')->middleware(['auth']);
-Route::put('/products/{id}/disable', [ProductController::class, 'editImage'])->middleware(['auth']);
+Route::put('/products/{id}/editStock', [ProductController::class, 'editStock'])->middleware(['auth']);
 Route::post('/products/create', [ProductController::class, 'store'])->middleware(['auth']);
 
 Route::resource('categories', 'App\Http\Controllers\CategoryController')->middleware(['auth']);
@@ -41,5 +41,10 @@ Route::post('/categories/create', [CategoryController::class, 'store'])->middlew
 
 Route::resource('subcategories', 'App\Http\Controllers\SubcategoryController')->middleware(['auth']);
 Route::post('/subcategories/create', [SubcategoryController::class, 'store'])->middleware(['auth']);
+
+Route::resource('orders', 'App\Http\Controllers\OrderController')->middleware(['auth']);
+Route::post('/orders/create', [OrderController::class, 'store'])->middleware(['auth']);
+
+Route::put('/details/{id}', [DetailController::class, 'update'])->middleware(['auth']);
 
 require __DIR__.'/auth.php';

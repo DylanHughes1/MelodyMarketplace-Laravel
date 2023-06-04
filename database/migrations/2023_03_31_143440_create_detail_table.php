@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('detail', function (Blueprint $table) {
             $table->id();
+            $table->integer('quantity');
             $table->timestamps();
 
             $table->unsignedBigInteger('product_id')->nullable();
@@ -20,6 +21,8 @@ return new class extends Migration
 
             $table->unsignedBigInteger('order_id')->nullable();
             $table->foreign('order_id')->references('id')->on('order');
+
+            $table->softDeletes();
 
         });
     }

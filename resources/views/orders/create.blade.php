@@ -1,5 +1,5 @@
 @extends("layouts.app")
-@section('title', 'Products')
+@section('Pedidos', 'Orders')
 @section('content')
 
 <body class="text-center">
@@ -10,33 +10,20 @@
                     <div class="p-6 bg-white border-b border-gray-200">  
 
                         <div class="mb-6 text-center">
-                        <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Crear Producto</h1>
+                        <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Crear Orden</h1>
                         </div>
 
                         <form method="POST" action="/products/create" enctype="multipart/form-data"> 
                             @csrf
 
                             <div class="mb-6">
-                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID</label>
                                 <input type="text" name="name" id="name" class="product-name bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                             </div>
                             <div class="mb-6">
-                                <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Precio</label>
+                                <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Direccion</label>
                                 <input type="number" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                            </div>
-                            <div class="mb-6">
-                                <label for="subcategories" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subcategoria</label>
-                                <select id="subcategories" name="subcategory"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                                    <option value="" selected> - </option>
-                                    @foreach($subcategories as $subcategory)
-                                        <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
-                                    @endforeach               
-                                </select>
-                            </div>  
-                            <div class="mb-6">        
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Subir Imagen</label> 
-                                <input name="image" id="image" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" required>
-                            </div>   
+                            </div>    
 
                             <div class="flex items-center justify-center pb-4"> 
 

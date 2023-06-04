@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('id', 'asc')->get();
+        $products = Product::orderBy('id', 'asc')->paginate(15);
         $categories = Category::all();
         $subcategories = Subcategory::all();
         
@@ -97,11 +97,16 @@ class ProductController extends Controller
 
     }
 
-    public function editImage(string $id)
+    public function editStock(string $id)
     {
         $product = Product::find($id);
-        if($product->hasStock)
+        
+        if ($product->hasStock){
             $product->hasStock = false;
+        } 
+        else if (!$product->hasStock){
+            $product->hasStock = true;
+        }
 
         $product->save();
 

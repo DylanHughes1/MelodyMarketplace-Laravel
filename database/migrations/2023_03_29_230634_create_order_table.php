@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->id();
             $table->string('delivery_address');
+            $table->unsignedBigInteger('client_id')->nullable();
+            $table->foreign('client_id')->references('id')->on('client');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

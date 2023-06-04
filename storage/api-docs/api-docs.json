@@ -71,97 +71,6 @@
                         }
                     }
                 }
-            },
-            "post": {
-                "tags": [
-                    "Categories"
-                ],
-                "summary": "Crear una nueva categoría",
-                "operationId": "cda39739b70fe24a43aa9a5d954baf7f",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "properties": {
-                                    "name": {
-                                        "description": "Category name",
-                                        "type": "string"
-                                    },
-                                    "image": {
-                                        "description": "Image to upload",
-                                        "type": "string",
-                                        "format": "binary"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Category created correctly",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "La categoría se creó con éxito."
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Validation error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Los datos proporcionados no son válidos."
-                                        },
-                                        "errors": {
-                                            "type": "object",
-                                            "example": {
-                                                "name": [
-                                                    "El campo nombre es obligatorio."
-                                                ],
-                                                "image": [
-                                                    "El campo imagen es obligatorio.",
-                                                    "El campo imagen debe ser una imagen.",
-                                                    "El campo imagen no debe ser mayor de 1000 kilobytes."
-                                                ]
-                                            }
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal server error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Ocurrió un error al almacenar la imagen."
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
             }
         },
         "/rest/categories/{id}": {
@@ -240,73 +149,37 @@
                         }
                     }
                 }
-            },
-            "put": {
+            }
+        },
+        "/rest/details": {
+            "get": {
                 "tags": [
-                    "Categories"
+                    "Details"
                 ],
-                "summary": "Actualiza una categoría existente.",
-                "operationId": "f7e601193addcfc8633d81e8229dea6a",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Category ID to update.",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int64"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "required": [
-                                    "name"
-                                ],
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "example": "Nombre de la categoría"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
+                "summary": "Obtiene todos los detalles",
+                "operationId": "32197999431724acfbf2a7e89f0e084b",
                 "responses": {
                     "200": {
-                        "description": "Category updated correctly.",
+                        "description": "Successful operation",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Categoría actualizada correctamente."
+                                        "id": {
+                                            "description": "Detail ID",
+                                            "type": "integer"
                                         },
-                                        "category": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Malformed or missing fields required.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "La solicitud es inválida."
+                                        "quantity": {
+                                            "description": "Quantity",
+                                            "type": "integer"
+                                        },
+                                        "product_id": {
+                                            "description": "Product ID",
+                                            "type": "integer"
+                                        },
+                                        "order_id": {
+                                            "description": "Order ID",
+                                            "type": "integer"
                                         }
                                     },
                                     "type": "object"
@@ -315,14 +188,63 @@
                         }
                     },
                     "404": {
-                        "description": "The specified category does not exist.",
+                        "description": "Details not found.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "Error message.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Details"
+                ],
+                "summary": "Crea y almacena un nuevo detalle",
+                "operationId": "9334c6762867de1e4789e0a2dda830c6",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "product_id": {
+                                        "description": "product id",
+                                        "type": "integer"
+                                    },
+                                    "quantity": {
+                                        "description": "quantity",
+                                        "type": "integer"
+                                    },
+                                    "order_id": {
+                                        "description": "order id",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Detail created correctly",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "La categoría especificada no existe."
+                                            "example": "El detalle se creó con éxito."
                                         }
                                     },
                                     "type": "object"
@@ -330,15 +252,14 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Server error when upgrading the category.",
+                    "400": {
+                        "description": "Validation error",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
                                         "message": {
-                                            "type": "string",
-                                            "example": "Ocurrió un error al actualizar la categoría."
+                                            "type": "string"
                                         }
                                     },
                                     "type": "object"
@@ -346,12 +267,254 @@
                             }
                         }
                     }
-                },
-                "security": [
+                }
+            }
+        },
+        "/rest/details/{id}": {
+            "get": {
+                "tags": [
+                    "Details"
+                ],
+                "summary": "Obtiene un detalle específico a partir de su ID",
+                "operationId": "5752d1f1ff91a09400ebb06efc766116",
+                "parameters": [
                     {
-                        "bearerAuth": []
+                        "name": "id",
+                        "in": "path",
+                        "description": "Detail ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
                     }
-                ]
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "detail": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Detail not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/rest/orders": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Obtiene todos los pedidos",
+                "operationId": "2b48f389c9d87ccd90600352f086b2fe",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "description": "Order ID.",
+                                                "type": "integer"
+                                            },
+                                            "delivery_address": {
+                                                "description": "Customer delivery address.",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Orders not found.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "Error message.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Create and store a new order",
+                "operationId": "874f641bb95349ca57bbd159a29da427",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "delivery_address",
+                                    "email",
+                                    "name",
+                                    "details"
+                                ],
+                                "properties": {
+                                    "delivery_address": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "details": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "quantity": {
+                                                    "type": "integer"
+                                                },
+                                                "product_id": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Order created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "order": {
+                                            "properties": {
+                                                "delivery_address": {
+                                                    "type": "string"
+                                                },
+                                                "client_id": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/rest/orders/{id}": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Obtiene un pedido específico a partir de su ID",
+                "operationId": "ff3a5ef3e3ba00579eaa8d3b45c682ac",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Order ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "order": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Order not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/rest/products": {
@@ -433,130 +596,6 @@
                 }
             }
         },
-        "/rest/products/": {
-            "get": {
-                "tags": [
-                    "Products"
-                ],
-                "summary": "Obtiene todas las categorias y subcategorías",
-                "operationId": "30c27f2648c511d54b712f2a52ad019c",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "categories": {
-                                            "type": "array",
-                                            "items": {
-                                                "properties": {
-                                                    "id": {
-                                                        "type": "integer",
-                                                        "example": "1"
-                                                    },
-                                                    "name": {
-                                                        "type": "string",
-                                                        "example": "Guitarra"
-                                                    }
-                                                },
-                                                "type": "object"
-                                            }
-                                        },
-                                        "subcategories": {
-                                            "type": "array",
-                                            "items": {
-                                                "properties": {
-                                                    "id": {
-                                                        "type": "integer",
-                                                        "example": "1"
-                                                    },
-                                                    "name": {
-                                                        "type": "string",
-                                                        "example": "Guitarra Electrica"
-                                                    }
-                                                },
-                                                "type": "object"
-                                            }
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/rest/products/create": {
-            "post": {
-                "tags": [
-                    "Products"
-                ],
-                "summary": "Crea y almacena un nuevo producto",
-                "operationId": "6238b5b5bec28b3ea94ca1d857fa1937",
-                "requestBody": {
-                    "description": "Product data",
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "maxLength": 255
-                                    },
-                                    "price": {
-                                        "type": "integer",
-                                        "minimum": 1
-                                    },
-                                    "subcategory": {
-                                        "type": "integer"
-                                    },
-                                    "image": {
-                                        "type": "string",
-                                        "format": "binary"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Product created successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Error in image storage",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/rest/products/{id}": {
             "get": {
                 "tags": [
@@ -591,150 +630,6 @@
                                         "subcategories": {
                                             "type": "array",
                                             "items": {}
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Product not found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "error": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "Products"
-                ],
-                "summary": "Actualiza el producto identificado por el ID",
-                "operationId": "2fe491327293ead2addffd2e8ad72158",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID of the product",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int64"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "maxLength": 255
-                                    },
-                                    "price": {
-                                        "type": "integer",
-                                        "minimum": 1
-                                    },
-                                    "subcategory": {
-                                        "type": "integer"
-                                    },
-                                    "image": {
-                                        "type": "string",
-                                        "format": "binary"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Product updated successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Validation error or error storing image",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Product not found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "error": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/rest/products/{id}/disable": {
-            "put": {
-                "tags": [
-                    "Products"
-                ],
-                "summary": "Deshabilita el producto mediante el stock",
-                "operationId": "0790240aa76439b065b918e8f2d314b2",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Product ID",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "Image edited successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string"
                                         }
                                     },
                                     "type": "object"
@@ -826,97 +721,6 @@
                         }
                     }
                 }
-            },
-            "post": {
-                "tags": [
-                    "Subcategories"
-                ],
-                "summary": "Crear una nueva subcategoría",
-                "operationId": "42371d3f16c831fa87e71a8b104c7103",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "properties": {
-                                    "name": {
-                                        "description": "Subcategory name",
-                                        "type": "string"
-                                    },
-                                    "image": {
-                                        "description": "Image to upload",
-                                        "type": "string",
-                                        "format": "binary"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Subcategory created correctly",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "La subcategoría se creó con éxito."
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Validation error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Los datos proporcionados no son válidos."
-                                        },
-                                        "errors": {
-                                            "type": "object",
-                                            "example": {
-                                                "name": [
-                                                    "El campo nombre es obligatorio."
-                                                ],
-                                                "image": [
-                                                    "El campo imagen es obligatorio.",
-                                                    "El campo imagen debe ser una imagen.",
-                                                    "El campo imagen no debe ser mayor de 1000 kilobytes."
-                                                ]
-                                            }
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal server error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Ocurrió un error al almacenar la imagen."
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
             }
         },
         "/rest/subcategories/{id}": {
@@ -995,118 +799,6 @@
                         }
                     }
                 }
-            },
-            "put": {
-                "tags": [
-                    "Subcategories"
-                ],
-                "summary": "Actualiza una subcategoría existente.",
-                "operationId": "04a37f7f3196caa782c813a8818347f6",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Subcategory ID to update.",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int64"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "required": [
-                                    "name"
-                                ],
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "example": "Nombre de la subcategoría"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Subcategory updated correctly.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Subcategoría actualizada correctamente."
-                                        },
-                                        "subcategory": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Malformed or missing fields required.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "La solicitud es inválida."
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "The specified subcategory does not exist.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "La subcategoría especificada no existe."
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Server error when upgrading the subcategory.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Ocurrió un error al actualizar la subcategoría."
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
             }
         }
     }

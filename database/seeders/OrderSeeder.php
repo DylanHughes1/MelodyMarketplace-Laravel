@@ -16,10 +16,12 @@ class OrderSeeder extends Seeder
         $data = [
             [
                 'delivery_address' => 'Terrada 123',
+                'client_id' => '1',
             ],
 
             [
                 'delivery_address' => 'Juan Molina 256',
+                'client_id' => '1',
             ],
         ];
 

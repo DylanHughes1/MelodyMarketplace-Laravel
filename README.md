@@ -30,6 +30,12 @@ El servicio debe permitir:
 A través de una interfaz amigable, y un menú de navegación claro el cliente podrá comprar instrumentos musicales disponibles luego de haberse registrado e iniciado sesión. Tendrá acceso a todo el contenido organizado, incluso cuenta con una búsqueda interna para facilitar la búsqueda de los equipos. Los mismos estaran organizandos en categorias generales y ademas en categorias mas especificas para facilitar su busqueda y organizacion. También podrá modificar una compra o cancelarla.
 Además, el cliente podrá ver los últimos descuentos, y suscribirse para recibir correos electrónicos de los mismos.
 
+# Swagger
+
+Link de Swagger: https://hughes-maslein-laravel-git-larave-ba45c8-hughes-maslein-laravel.vercel.app/rest/documentation
+
+Link alternativo: https://app.swaggerhub.com/apis/DylanHughes1/Laravel_API/0.1
+
 ## Pasos
 
 - clonar el repo https://github.com/iaw-2023/laravel-template y mantener como owner la organización de la materia.
