@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\APIProductController;
 use App\Http\Controllers\APIOrderController;
 use App\Http\Controllers\APIDetailController;
+use App\Http\Controllers\AuthController;
 
 
 /*
