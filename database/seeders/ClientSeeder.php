@@ -16,6 +16,7 @@ class ClientSeeder extends Seeder
             [
                 'name' => 'Dylan Maslein',
                 'email' => 'dylan_maslein@outlook.com',
+                'password' => 'asd123'
             ],
         ];
 
