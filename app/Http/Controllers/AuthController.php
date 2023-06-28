@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use App\Http\Resources\UserResource;
+use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Laravel\Sanctum\Sanctum;
+use App\Models\Client;
 
 class AuthController extends Controller
 {
@@ -32,6 +32,18 @@ class AuthController extends Controller
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
         ]);
+
+        $client = Client::where('email', $request->input('email'))->first();
+
+        if ($client) {
+            echo "Ya existe el usuario con ese email";
+        } else {
+            $client = new Client();
+            $client->name = $request->input('name');
+            $client->email = $request->input('email');
+            $client->password = $request->input('password');
+            $client->save();
+        }
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
@@ -60,18 +72,15 @@ class AuthController extends Controller
         }
     }
 
-    // logout a user method
     public function logout()
     {
         auth('web')->logout();
-        //$request->session()->invalidate();
-        //$request->session()->regenerateToken();
-        return response()->json(['message' => 'Logged out successfully!'], 200);
+        Session::flush();
+        return response()->json(['status' => true, 'message' => 'logged out']);
     }
 
-    // get the authenticated user method
-    public function user(Request $request)
+    public function user()
     {
-        return new UserResource($request->user());
+        return response()->json(['status' => true, 'user' => auth()->user()]);
     }
 }
