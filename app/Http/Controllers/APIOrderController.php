@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Client;
 use App\Models\Detail;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class APIOrderController extends Controller
 {
@@ -175,8 +177,31 @@ class APIOrderController extends Controller
      */
     public function show($id)
     {
-        $order = Order::findOrFail($id);
+        $order = Order::find($id);
 
         return response()->json(['order' => $order]);
+    }
+
+
+    public function getOrdersByUserToken(Request $request)
+    {
+        $token = $request->bearerToken();
+
+        if (!$token) {
+            return response()->json(['error' => 'Token no proporcionado'], 401);
+        }
+
+        return response()->json(['token'=>$token]);
+
+        $user = Client::where('remember_token', $token)->first();
+        
+
+        if (!$user) {
+            return response()->json(['error' => 'Token inválido'], 401);
+        }
+
+        $orders = Order::where('client_id', $user->id)->get();
+
+        return response()->json(['orders' => $orders], 200);
     }
 }

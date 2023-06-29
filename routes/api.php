@@ -43,6 +43,7 @@ Route::post('/subcategories/create', [APISubCategoryController::class, 'store'])
 
 Route::apiResource('orders', APIOrderController::class);
 Route::post('/orders/create', [APIOrderController::class, 'store']);
+Route::get('/orders', [APIOrderController::class, 'getOrdersByUserToken']);
 
 Route::apiResource('details', APIDetailController::class);
 Route::post('/details/create', [APIDetailController::class, 'store']);

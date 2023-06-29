@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Client;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -42,12 +42,14 @@ class AuthController extends Controller
             $client->name = $request->input('name');
             $client->email = $request->input('email');
             $client->password = $request->input('password');
+            $client->remember_token = $user->createToken('auth_token')->plainTextToken;
             $client->save();
         }
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        $user -> remember_token = $client -> remember_token;
+        $user -> save();
 
-        return response()->json(['token' => $token], 200);
+        return response()->json(['token' => $client->remember_token], 200);
     }
 
     // login a user method
