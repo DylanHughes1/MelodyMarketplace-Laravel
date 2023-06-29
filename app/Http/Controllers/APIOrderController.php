@@ -183,22 +183,14 @@ class APIOrderController extends Controller
 
     public function getOrdersByUserToken(Request $request)
     {
-        $token = $request->bearerToken();
+        $currentUser = auth()->guard('api')->user();
 
-        if (!$token) {
-            return response()->json(['error' => 'Token no proporcionado'], 401);
-        }
+        if (!$currentUser)
+            return response()->json(['status' => 'Invalid Token.'], 401);
 
-        return response()->json(['token'=>$token]);
-
-        $user = Client::where('remember_token', $token)->first();
+        $client = Client::where('email', $currentUser->email)->first();
         
-
-        if (!$user) {
-            return response()->json(['error' => 'Token inválido'], 401);
-        }
-
-        $orders = Order::where('client_id', $user->id)->get();
+        $orders = Order::where('client_id', $client->id)->get();
 
         return response()->json(['orders' => $orders], 200);
     }
