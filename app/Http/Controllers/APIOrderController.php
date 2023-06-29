@@ -7,8 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Client;
 use App\Models\Detail;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 
 class APIOrderController extends Controller
 {
