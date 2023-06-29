@@ -7,6 +7,7 @@ use App\Http\Controllers\APIProductController;
 use App\Http\Controllers\APIOrderController;
 use App\Http\Controllers\APIDetailController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\APIPurchaseController;
 
 
 /*
@@ -45,3 +46,5 @@ Route::post('/orders/create', [APIOrderController::class, 'store']);
 
 Route::apiResource('details', APIDetailController::class);
 Route::post('/details/create', [APIDetailController::class, 'store']);
+
+Route::post('/comprar/auth', [APIPurchaseController::class, 'makePurchase']);
