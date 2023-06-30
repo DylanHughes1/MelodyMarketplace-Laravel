@@ -17,7 +17,6 @@ class APIPurchaseController extends Controller
         // \MercadoPago\SDK::setAccessToken(env("VITE_ACCESS_TOKEN"));
         MercadoPago\SDK::setAccessToken("TEST-8154182059068188-062013-688347d68cda673bb7b097a204801577-393519241");
 
-
         $contents = $request->json()->all();
 
         $payment = new MercadoPago\Payment();
