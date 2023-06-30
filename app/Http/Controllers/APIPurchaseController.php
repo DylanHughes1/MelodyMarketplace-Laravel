@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use MercadoPago;
 
-require_once 'vendor/autoload.php';
+// require_once 'vendor/autoload.php';
 class APIPurchaseController extends Controller
 {
 

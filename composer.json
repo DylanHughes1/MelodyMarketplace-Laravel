@@ -29,9 +29,11 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/",
-            "MercadoPago\\": "vendor/mercadopago/dx-php/src/MercadoPago/"
-        }
+            "Database\\Seeders\\": "database/seeders/"
+        },
+        "classmap": [
+            "vendor/mercadopago/dx-php/src"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
