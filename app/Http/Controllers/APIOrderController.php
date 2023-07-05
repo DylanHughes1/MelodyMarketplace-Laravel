@@ -112,11 +112,12 @@ class APIOrderController extends Controller
         ]);
 
         $client = Client::where('email', $request->input('email'))->get();
+
         if (!$client->isEmpty()) {
             $order = new Order();
             $order->delivery_address = $request->input('delivery_address');
             $order->mpID = $request->input('mpID');
-            $order->client_id = $client->first()->id();      
+            $order->client_id = $client->first()->id;      
         } else {
             $newClient = new Client();
             $newClient->name = $request->input('name');
@@ -128,7 +129,6 @@ class APIOrderController extends Controller
             $order->mpID = $request->input('mpID');
             $order->client_id = $newClient->id;
         }
-
         $order->save();
 
         $details = $request->input('details');
