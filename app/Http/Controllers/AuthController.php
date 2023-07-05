@@ -62,7 +62,7 @@ class AuthController extends Controller
         // Attempt to authenticate the user
         if (Auth::attempt($credentials)) {
             $client = User::where('email', $credentials['email'])->first();
-            $token = $client->createToken('client-token')->plainTextToken;
+            $token = $client->remember_token;
             return response()->json([
                 'token' => $token
             ], 200);
