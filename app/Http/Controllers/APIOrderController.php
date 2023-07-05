@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Client;
 use App\Models\Detail;
+use Illuminate\Support\Facades\Auth;
 
 class APIOrderController extends Controller
 {
@@ -185,15 +186,17 @@ class APIOrderController extends Controller
 
     public function getOrdersByUserToken(Request $request)
     {
-        $currentUser = auth()->guard('api')->user();
 
-        if (!$currentUser)
-            return response()->json(['status' => 'Invalid Token.'], 401);
+        $token = $request->bearerToken();
 
-        $client = Client::where('email', $currentUser->email)->first();
-        
-        $orders = Order::where('client_id', $client->id)->get();
+        $client = Client::where('remember_token', $token)->first();
 
-        return response()->json(['orders' => $orders], 200);
+        if ($client) {
+            $orders = Order::with('details')->where('client_id', $client->id)->get();
+
+            return response()->json(['orders' => $orders]);
+        } else {
+            return response()->json(['error' => 'Cliente no encontrado'], 404);
+        }
     }
 }
