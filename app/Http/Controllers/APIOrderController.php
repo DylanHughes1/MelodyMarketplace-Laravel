@@ -115,7 +115,8 @@ class APIOrderController extends Controller
         if (!$client->isEmpty()) {
             $order = new Order();
             $order->delivery_address = $request->input('delivery_address');
-            $order->client_id = $client->first()->id();
+            $order->mpID = $request->input('mpID');
+            $order->client_id = $client->first()->id();      
         } else {
             $newClient = new Client();
             $newClient->name = $request->input('name');
@@ -124,6 +125,7 @@ class APIOrderController extends Controller
 
             $order = new Order();
             $order->delivery_address = $request->input('delivery_address');
+            $order->mpID = $request->input('mpID');
             $order->client_id = $newClient->id;
         }
 
